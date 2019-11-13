@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaweb.mapper.UserMapper">
+
+    <insert id="add" parameterType="com.javaweb.model.User"><![CDATA[
+        INSERT INTO JAVA_USER (userId,userName,sex,password,tel,state,address,registerTime)
+                VALUES (#{userId},#{userName},#{sex}, #{password}, #{tel},#{state},#{address},#{registerTime})
+    ]]></insert>
+    <select id="queryByUserName" parameterType="string" resultType="com.javaweb.model.User">
+        select * from JAVA_USER where userName = #{userName}
+    </select>
+    <select id="queryByConditions" parameterType="string" resultType="com.javaweb.model.User">
+        select * from JAVA_USER
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId!=null and userId!= ''">
+                and userId=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and userName=#{userName}
+            </if>
+            <if test="sex!=null and sex!=''">
+                and sex=#{sex}
+            </if>
+        </trim>
+        ${orderSql}
+        limit #{startIndex},#{pageSize}
+    </select>
+    <select id="countByConditions" parameterType="string" resultType="int">
+        select count(*) from JAVA_USER
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId!=null and userId!= ''">
+                and userId=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and userName=#{userName}
+            </if>
+            <if test="sex!=null and sex!=''">
+                and sex=#{sex}
+            </if>
+        </trim>
+    </select>
+    <select id="queryByUserId" parameterType="string" resultType="com.javaweb.model.User">
+        select * from JAVA_USER where userId = #{userId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.User">
+        update JAVA_USER
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName != null">
+                userName = #{userName},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="tel != null">
+                tel = #{tel},
+            </if>
+
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="registerTime!=null">
+                registerTime=#{registerTime},
+            </if>
+        </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+        </trim>
+    </update>
+    <delete id="deleteByUserId" >
+        delete from JAVA_USER where userId=#{userId}
+    </delete>
+    <select id="queryByShopConditions"  resultType="com.javaweb.model.User">
+        select * from JAVA_USER
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId!=null and userId!= ''">
+                and userId=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and userName=#{userName}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+        </trim>
+        ${orderSql}
+        limit #{startIndex},#{pageSize}
+    </select>
+    <select id="countByShopConditions"  resultType="int">
+        select count(*) from JAVA_USER
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId!=null and userId!= ''">
+                and userId=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and userName=#{userName}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+        </trim>
+    </select>
+    <update id="editor" parameterType="com.javaweb.model.User">
+        update JAVA_USER
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName != null">
+                userName = #{userName},
+            </if>
+
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="tel != null">
+                tel = #{tel},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="registerTime!=null">
+                registerTime=#{registerTime},
+            </if>
+        </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+        </trim>
+    </update>
+</mapper>
