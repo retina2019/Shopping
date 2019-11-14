@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
 	void add(User user);
-	User queryByUserName(String userName);
+	User queryByUserName(@Param("userName") String userName);
 
     List<User> queryByConditions(@Param("userId")String userId, @Param("userName") String userName,
 								 @Param("sex") int sex, @Param("startIndex") int startIndex,

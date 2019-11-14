@@ -47,6 +47,7 @@
         <property name="prefix" value="/WEB-INF/view/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+
     <!-- 处理静态资源 -->
     <!-- <mvc:default-servlet-handler/>  -->
     <mvc:resources mapping="/**" location="/static/" />
