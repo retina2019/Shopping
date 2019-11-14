@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.javaweb.mapper.DepMapper">
-    <select id="searchByDepId" parameterType="int" resultType="com.javaweb.model.Department">
+    <select id="searchByDepId" parameterType="string" resultType="com.javaweb.model.Dep">
         select * from DEPARTMENT
         <trim prefix="where" prefixOverrides="and">
             <if test="depId != null">

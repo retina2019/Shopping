@@ -1,5 +1,6 @@
 package com.javaweb.service.Impl;
 
+import com.javaweb.mapper.DepMapper;
 import com.javaweb.model.Dep;
 import com.javaweb.service.DepService;
 import org.springframework.beans.factory.annotation.Autowired;

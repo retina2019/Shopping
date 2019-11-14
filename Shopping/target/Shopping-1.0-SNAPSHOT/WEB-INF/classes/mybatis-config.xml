@@ -18,5 +18,6 @@
     <mappers>
 <!--        <package name="com.javaweb.mapper"/>-->
         <mapper resource="mapping/Users.xml"/>
+        <mapper resource="mapping/Department.xml"/>
     </mappers>
 </configuration>
