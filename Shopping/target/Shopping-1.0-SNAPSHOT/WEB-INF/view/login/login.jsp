@@ -35,6 +35,7 @@
             <tr>
                 <td width="100%" height="40" align="center" colspan="2">
                     <input id="submitBtn" type="button" name="sub" value="用户登录" class="btn btn-primary radius" onclick="tijiao();">
+<%--                    <input type="button" id="submitBtn" name="sub" class="btn btn-success radius"  value="用户登录"/>--%>
                     <a  href="javascript:;" onclick="customer_registor('注册普通用户','/Shopping/registor/user')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 普通用户注册</a>
                     <a  href="javascript:;" onclick="shop_registor('注册商家','/Shopping/registor/shoper')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 商家注册</a>
                 </td>
@@ -47,24 +48,14 @@
         var checkData = function(){
             var userName = $("#userName").val();
             if(userName==""){
-                alert("登入名不可为空");
+                alert("用户名不可为空");
                 return false;
             }
-            <%--var userName1='${usermessage.userName}';--%>
-            <%--if(userName!=userName1){--%>
-            <%--    alert("用户名不存在");--%>
-            <%--    return false;--%>
-            <%--}--%>
             var password = $("#psd").val();
             if(password==""){
-                alert("登入密码不可为空");
+                alert("密码不可为空");
                 return false;
-            }
-            <%--var password1='${usermessage.password}';--%>
-            <%--if(password!=password1){--%>
-            <%--    alert("用户名和密码不符");--%>
-            <%--    return false;--%>
-            <%--}--%>
+                }
                 return true;
 
         }
@@ -76,20 +67,55 @@
                     userName:$("#userName").val(),//获取username值
                     password:$("#psd").val(),/* 获取password值 */
                 }
-                <%--var data1={--%>
-                <%--    userName:${usermessage.userName},--%>
-                <%--    password:${usermessage.password},--%>
-                <%--}--%>
-                <%--if (data==data1) {--%>
-                    //$('#submitBtn').click(function() {/* 通过点击提交按钮，触发点击事件 */
-                    $('#login').submit();/* 提交表单数据 */
-                    //});
-                // }else{
-                //     alert("用户名和密码不符");
-                //     return false;
-                // }
+                //$('#submitBtn').click(function() {/* 通过点击提交按钮，触发点击事件 */
+                $('#login').submit();/* 提交表单数据 */
+                //});
             }
         }
+        <%--var submit = function(){--%>
+        <%--    if (checkData()){--%>
+        <%--        var data={--%>
+        <%--            userName:$("#userName").val(),--%>
+        <%--            password:$("#password").val()--%>
+        <%--        }--%>
+        <%--        $.ajax({--%>
+        <%--            type: "POST",--%>
+        <%--            url: "/Shopping/login/sendParams",--%>
+        <%--            /* dataType:"json", */--%>
+        <%--            data:JSON.stringify(data),--%>
+        <%--            contentType:"application/json",--%>
+
+        <%--            success : function(result, status, req) {--%>
+        <%--                alert('success:');--%>
+        <%--                console.log("save success");--%>
+        <%--                window.parent.location.reload();--%>
+        <%--            },--%>
+        <%--            error : function(req, status, reason) {--%>
+        <%--                alert('Error:' + reason);--%>
+        <%--            }--%>
+        <%--        });--%>
+        <%--        &lt;%&ndash;var data1={&ndash;%&gt;--%>
+        <%--        &lt;%&ndash;    userName:'#{usermessage.userName}',&ndash;%&gt;--%>
+        <%--        &lt;%&ndash;    password:'#{usermessage.password}'&ndash;%&gt;--%>
+        <%--        &lt;%&ndash;}&ndash;%&gt;--%>
+        <%--        &lt;%&ndash;if(data==data1){&ndash;%&gt;--%>
+        <%--            $("#submitBtn").bind('click', function () {--%>
+        <%--                submit();--%>
+
+        <%--            })--%>
+        <%--    //     }--%>
+        <%--     }--%>
+        <%--}--%>
+        <%--var userName=$("#userName").val();--%>
+        <%--var userName1='#{usermessage.useName}';--%>
+        <%--var password=$("#password").val();--%>
+        <%--var password1='#{usermessage.password}';--%>
+        <%--if(userName==userName1) {--%>
+        <%--    if (password == password1) {--%>
+
+        //     }
+        // }
+
 
         function customer_registor(title,url){
             var index = layer.open({
