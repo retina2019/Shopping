@@ -69,4 +69,33 @@ public class DepController {
         }
         return "test success";
     }
+    @RequestMapping("/editDep")
+    public ModelAndView editDep(HttpServletRequest req, HttpServletResponse response){
+        ModelAndView mv = new ModelAndView();
+        try{
+            String depId = req.getParameter("depId");
+            System.out.println("depId:"+ depId);
+
+            Dep dep = depService.queryByDepId(depId);
+            mv.addObject("department", dep);//department是向前端传递的参数名。这边传的是对象worker，所以对应前端格式：参数名.对象内容（比如workermessage.workerId)
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        mv.setViewName("department/editdepartment");
+        return mv;
+    }
+    @RequestMapping(value="/submitdepartmentEdit", method=RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String submitdepartmentEdit(
+            @RequestBody Dep department
+    ) {
+        System.out.println("department.getDepId:"+department.getDepId());
+        try {
+            depService.edit(department);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "submitEdit success";
+    }
 }

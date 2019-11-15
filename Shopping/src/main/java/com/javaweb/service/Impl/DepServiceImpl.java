@@ -31,4 +31,17 @@ public class DepServiceImpl implements DepService {
         List<Dep> listdepartment = depMapper.queryAll();
         return listdepartment;
     }
+    @Override
+    public Dep queryByDepId(String depId)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("queryByDepId:"+depId);
+        Dep department=depMapper.queryByDepId(depId);
+        return department;
+    }
+    @Override
+    public void edit(Dep department)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("depservice:"+department.getDepId());
+        depMapper.edit(department);
+    }
 }

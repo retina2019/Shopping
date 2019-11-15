@@ -10,4 +10,8 @@ public interface DepService {
     public void save(Dep dep)throws Exception;
 
     public List<Dep> queryAll()throws Exception;
+
+    public Dep queryByDepId(String depId)throws Exception;
+
+    public void edit(Dep department)throws Exception;
 }

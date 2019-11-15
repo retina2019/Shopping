@@ -19,4 +19,32 @@
     <select id="queryAll" parameterType="string" resultType="com.javaweb.model.Dep">
         select * from DEPARTMENT
     </select>
+    <select id="queryByDepId" parameterType="string" resultType="com.javaweb.model.Dep">
+        select * from DEPARTMENT where depId = #{depId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.Dep">
+    update DEPARTMENT
+    <trim prefix="set" suffixOverrides=",">
+    <if test="depName != null">
+        depName = #{depName},
+    </if>
+    <if test="updepName!=null">
+        updepName=#{updepName},
+    </if>
+    <if test="depDescribe!=null">
+        depDescribe=#{depDescribe},
+    </if>
+    <if test="newDate!=null">
+        newDate=#{newDate},
+    </if>
+    <if test="offDate!=null">
+        offDate=#{offDate},
+    </if>
+    </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="depId != null">
+                and depId = #{depId}
+            </if>
+        </trim>
+    </update>
 </mapper>

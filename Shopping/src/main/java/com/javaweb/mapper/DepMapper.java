@@ -11,4 +11,8 @@ public interface DepMapper {
     void add(Dep dep);
 
     List<Dep> queryAll();
+
+    Dep queryByDepId(@Param("depId") String depId);
+
+    void edit(Dep department);
 }

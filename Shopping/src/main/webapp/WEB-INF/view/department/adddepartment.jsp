@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 上级部门：</label>
+            <label class="form-label col-xs-4 col-sm-2">上级部门：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <select name="updepName" id="updepName" class="input-text"value="">
                     <c:forEach items="${department}" var="dep">
