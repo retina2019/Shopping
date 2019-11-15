@@ -25,4 +25,10 @@ public class DepServiceImpl implements DepService {
         System.out.println("dep service:"+dep.getDepName());
         depMapper.add(dep);
     }
+    @Override
+    public List<Dep> queryAll()throws Exception{
+        // TODO Auto-generated method stub
+        List<Dep> listdepartment = depMapper.queryAll();
+        return listdepartment;
+    }
 }

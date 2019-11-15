@@ -46,9 +46,15 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"> 上级部门名称：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 上级部门：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text"  id="updepName" name="updepName"  >
+                <select name="updepName" id="updepName" class="input-text"value="">
+                    <c:forEach items="${department}" var="dep">
+                        <option value="${dep.depId}">
+                                ${dep.depName}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
         <div class="row cl">

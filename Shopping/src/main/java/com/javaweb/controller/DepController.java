@@ -47,6 +47,8 @@ public class DepController {
         Date date = new Date();
         System.out.println(date.toString()+":add department");
         ModelAndView mv=new ModelAndView();
+        List<Dep> dep=depService.queryAll();
+        mv.addObject("department",dep);
         mv.setViewName("department/adddepartment");
         return mv;
     }
@@ -60,6 +62,7 @@ public class DepController {
 
         System.out.println("depName:"+dep.getDepName());
         try {
+
             depService.save(dep);
         } catch (Exception e) {
             e.printStackTrace();

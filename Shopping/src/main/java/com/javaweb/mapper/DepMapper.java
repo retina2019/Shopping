@@ -9,4 +9,6 @@ public interface DepMapper {
     List<Dep> searchByDepId(@Param("depId") String depId);
 
     void add(Dep dep);
+
+    List<Dep> queryAll();
 }

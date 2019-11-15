@@ -8,4 +8,6 @@ public interface DepService {
     public List<Dep> searchByDepId(String depId) throws Exception;
 
     public void save(Dep dep)throws Exception;
+
+    public List<Dep> queryAll()throws Exception;
 }
