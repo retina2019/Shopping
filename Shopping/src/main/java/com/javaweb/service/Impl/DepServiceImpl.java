@@ -44,4 +44,10 @@ public class DepServiceImpl implements DepService {
         System.out.println("depservice:"+department.getDepId());
         depMapper.edit(department);
     }
+    @Override
+    public void deleteByDepId(int depId)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("deleteByDepId:"+depId);
+        depMapper.deleteByDepId(depId);
+    }
 }

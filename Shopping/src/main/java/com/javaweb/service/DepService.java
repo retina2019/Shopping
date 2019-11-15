@@ -14,4 +14,6 @@ public interface DepService {
     public Dep queryByDepId(String depId)throws Exception;
 
     public void edit(Dep department)throws Exception;
+
+    public void deleteByDepId(int depId)throws Exception;
 }

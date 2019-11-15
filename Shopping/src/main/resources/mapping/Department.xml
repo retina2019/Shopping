@@ -47,4 +47,7 @@
             </if>
         </trim>
     </update>
+    <delete id="deleteByDepId" >
+        delete from DEPARTMENT where depId=#{depId}
+    </delete>
 </mapper>

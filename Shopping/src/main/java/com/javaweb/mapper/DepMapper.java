@@ -15,4 +15,6 @@ public interface DepMapper {
     Dep queryByDepId(@Param("depId") String depId);
 
     void edit(Dep department);
+
+    void deleteByDepId(int depId);
 }
