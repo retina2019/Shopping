@@ -50,7 +50,6 @@
                 <th><input name="" type="checkbox" value=""></th>
                 <th>部门编号</th>
                 <th>部门名称</th>
-                <th>上级部门ID</th>
                 <th>上级部门名称</th>
                 <th>部门描述</th>
                 <th>部门创建时间</th>
@@ -65,11 +64,10 @@
                 <td><input name="" type="checkbox" value=""></td>
                 <td>${dep.depId}</td><!--注意这里的属性要与bean中的属性相一致-->
                 <td>${dep.depName}</td>
-                <td>${dep.updepId}</td>
                 <td>${dep.updepName}</td>
                 <td>${dep.depDescribe}</td>
                 <td>${dep.newDate}</td>
-                <td>${dep.closeDate}</td>
+                <td>${dep.offDate}</td>
                 <td class="f-14 td-manage">
                     <a style="text-decoration:none" class="ml-5" onClick="dep_edit('部门编辑','/Shopping/department/editDep','${dep.depId}')" href="javascript:;" title="编辑">
                         <i class="Hui-iconfont">&#xe6df;</i>

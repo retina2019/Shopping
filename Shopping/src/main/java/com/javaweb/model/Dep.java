@@ -3,11 +3,19 @@ package com.javaweb.model;
 public class Dep {
     public int depId;
     public String depName;
-    public int updepId;
     public String updepName;
     public String depDescribe;
     public String newDate;
-    public String closeDate;
+
+    public String getOffDate() {
+        return offDate;
+    }
+
+    public void setOffDate(String offDate) {
+        this.offDate = offDate;
+    }
+
+    public String offDate;
 
     public int getDepId() {
         return depId;
@@ -25,13 +33,6 @@ public class Dep {
         this.depName = depName;
     }
 
-    public int getUpdepId() {
-        return updepId;
-    }
-
-    public void setUpdepId(int updepId) {
-        this.updepId = updepId;
-    }
 
     public String getUpdepName() {
         return updepName;
@@ -57,11 +58,5 @@ public class Dep {
         this.newDate = newDate;
     }
 
-    public String getCloseDate() {
-        return closeDate;
-    }
 
-    public void setCloseDate(String closeDate) {
-        this.closeDate = closeDate;
-    }
 }

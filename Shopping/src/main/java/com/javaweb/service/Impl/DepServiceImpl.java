@@ -19,5 +19,10 @@ public class DepServiceImpl implements DepService {
         List<Dep> dep = depMapper.searchByDepId(depId);
         return dep;
     }
-
+    @Override
+    public void save(Dep dep)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("dep service:"+dep.getDepName());
+        depMapper.add(dep);
+    }
 }

@@ -12,4 +12,8 @@
             </if>
         </trim>
     </select>
+    <insert id="add" parameterType="com.javaweb.model.Dep"><![CDATA[
+        INSERT INTO DEPARTMENT (depId,depName,updepName,depDescribe,newDate,offDate)
+                VALUES (#{depId},#{depName}, #{updepName}, #{depDescribe},#{newDate},#{offDate})
+    ]]></insert>
 </mapper>

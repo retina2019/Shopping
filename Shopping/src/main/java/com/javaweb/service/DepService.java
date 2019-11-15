@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DepService {
     public List<Dep> searchByDepId(String depId) throws Exception;
+
+    public void save(Dep dep)throws Exception;
 }
