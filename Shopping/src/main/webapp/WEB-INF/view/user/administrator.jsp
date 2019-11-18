@@ -69,7 +69,7 @@
 <script type="text/javascript" src="/Shopping/H-ui.admin/static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="/Shopping/H-ui.admin/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript">
-    var url = "/Shopping/user/getadminList";
+    var url = "/Shopping/admin/getadminList";
     var getParamsUrl = function(){
         var userId=$("#userId").val();
         var userName=$("#userName").val();
@@ -137,7 +137,7 @@
     }
     function user_edit(id){
         var title="后台管理人员编辑";
-        var url="/Shopping/user/editadmin";
+        var url="/Shopping/admin/editadmin";
         var index = layer.open({
             type: 2,
             title: title,
@@ -150,7 +150,7 @@
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
                 type: 'POST',
-                url: '/Shopping/user/deleteadmin',
+                url: '/Shopping/admin/deleteadmin',
                 //dataType: 'json',
                 data:JSON.stringify(data),
                 dataType: 'text',//直接返回字符串用text

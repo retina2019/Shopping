@@ -81,10 +81,10 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 部门：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select name="depId" id="depId" class="input-text"value="">
-                    <c:forEach items="${department}" var="dep">
-                        <option value="${dep.depId}">
-                                ${dep.depName}
+                <select name="depName" id="depName" class="input-text"value="">
+                    <c:forEach items="${department}" var="department">
+                        <option value="${department.depId}">
+                                ${department.depName}
                         </option>
                     </c:forEach>
                 </select>
@@ -157,8 +157,8 @@
             alert("地址不可为空");
             return false;
         }
-        var depId = $("#depId").val();
-        if(depId==""){
+        var depName = $("#depName").val();
+        if(depName==""){
             alert("部门不可为空");
             return false;
         }
@@ -183,12 +183,12 @@
                 tel:$("#tel").val(),
                 state:$('input[name="state"]:checked').val(),
                 address:$("#address").val(),
-                depId:$("#depId").val(),
+                depName:$("#depName").val(),
                 registerTime:$("#registerTime").val()
             }
             $.ajax({
                 type: "POST",
-                url: "/Shopping/user/admin",
+                url: "/Shopping/admin/admin",
                 // dataType:"json",
                 data:JSON.stringify(data),
                 //contentType : "application/x-www-form-urlencoded",
