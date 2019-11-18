@@ -117,4 +117,18 @@ public class AdminController {
 		}
 		return "submitEdit success";
 	}
+    @RequestMapping(value="/deleteadmin", method=RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String deleteadmin(
+            @RequestBody Admin admin//传递整个对象时用@RequestBody
+    ) {
+        System.out.println("userId:"+admin.getUserId());
+        try {
+            adminService.deleteByUserId(admin.getUserId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "删除成功！！！";
+    }
+
 }

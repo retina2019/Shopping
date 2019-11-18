@@ -47,4 +47,10 @@ public  int countByConditions(String userId, String userName, int state)throws E
         System.out.println("adminservice:"+admin.getUserId());
         adminMapper.edit(admin);
     }
+    @Override
+    public void deleteByUserId(int userId)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("deleteByUserId:"+userId);
+        adminMapper.deleteByUserId(userId);
+    }
 }

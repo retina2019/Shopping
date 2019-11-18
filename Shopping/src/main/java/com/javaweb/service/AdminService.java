@@ -14,4 +14,6 @@ public interface AdminService {
   public Admin queryByUerId(String userId)throws Exception;
 
   public  void edit(Admin admin)throws Exception;
+
+   public void deleteByUserId(int userId)throws Exception;
 }

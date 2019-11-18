@@ -73,4 +73,7 @@
             </if>
         </trim>
     </update>
+    <delete id="deleteByUserId">
+        delete from ADMININSTRTOR where userId=#{userId}
+    </delete>
 </mapper>
