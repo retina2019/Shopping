@@ -2,8 +2,10 @@ package com.javaweb.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.javaweb.model.Dep;
 import com.javaweb.model.TestModel;
 import com.javaweb.model.User;
+import com.javaweb.service.DepService;
 import com.javaweb.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,7 @@ public class UserController {
 
 	@Resource
 	private UserService userService;
+
 
 	/** 
      * 返回jsp
@@ -228,5 +231,46 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return "删除成功！！！";
+	}
+	@RequestMapping(value="/administrators")
+	public ModelAndView administrators(HttpServletRequest req, HttpServletResponse response) {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("user/administrator");
+		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/getadminList", method= RequestMethod.GET, produces="text/plain;charset=utf-8")
+	public String getadminList(HttpServletRequest req, HttpServletResponse response) {
+		List<User> listuser = null;
+		int count=0;
+		try {
+			response.setContentType("text/html;charset=utf-8");
+			String userId = req.getParameter("userId");
+			String userName=req.getParameter("userName");
+			int state= Integer.parseInt(req.getParameter("state"));
+			String start = req.getParameter("start");
+			String pageSize = req.getParameter("length");
+			if(null==pageSize || pageSize.equals("")) pageSize ="10";
+			String orderNum = req.getParameter("order[0][column]");
+			String orderData = req.getParameter("columns["+orderNum+"][data]");
+			String orderDir = req.getParameter("order[0][dir]");
+			String orderSql = " order by " + orderData + " " + orderDir;
+			int startIndex = Integer.parseInt(start);
+			System.out.println("userId:"+ userId );
+			System.out.println("userName"+userName);
+			String depId=req.getParameter("depId");
+			listuser = userService.queryByShopConditions(userId,userName,state,startIndex,Integer.parseInt(pageSize),orderSql);
+			count=userService.countByShopConditions(userId,userName,state);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Map map = new HashMap<String,Object>();
+		map.put("data",listuser);
+		map.put("recordsTotal",count);
+		map.put("recordsFiltered",count);
+		String str= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);//JSON.toJSONString中序列化空字符串遇到的坑，当某些字段为空时，转换成字符串时必须加SerializerFeature.WriteMapNullValue
+		System.out.println(str);
+		return str;
 	}
 }

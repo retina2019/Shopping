@@ -1,6 +1,8 @@
 package com.javaweb.controller;
 
+import com.javaweb.model.Dep;
 import com.javaweb.model.User;
+import com.javaweb.service.DepService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,10 +11,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/registor")
 public class RegistorController {
+    @Resource
+    private DepService depService;
 //    @Resource
 //    private UserService userService;
     /**
@@ -31,11 +36,23 @@ public class RegistorController {
     @RequestMapping("/shoper")
     public ModelAndView shopper(HttpServletRequest req, HttpServletResponse response) throws Exception {
         Date date = new Date();
-        System.out.println(date.toString()+":user registor");
+        System.out.println(date.toString()+":shopper registor");
         ModelAndView mv=new ModelAndView();
         User user=new User();
         mv.addObject("usermessage",user);
         mv.setViewName("user/addshopper");
+        return mv;
+    }
+    @RequestMapping("/administrator")
+    public ModelAndView admininstrator(HttpServletRequest req, HttpServletResponse response) throws Exception {
+        Date date = new Date();
+        System.out.println(date.toString()+":administrator registor");
+        ModelAndView mv=new ModelAndView();
+        User user=new User();
+        mv.addObject("usermessage",user);
+        List<Dep> dep=depService.queryAll();
+        mv.addObject("department",dep);
+        mv.setViewName("user/addadminstrator");
         return mv;
     }
 }

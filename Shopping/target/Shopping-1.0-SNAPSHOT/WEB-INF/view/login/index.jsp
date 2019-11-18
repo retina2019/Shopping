@@ -50,6 +50,10 @@
 
                 </ul>
                 <ul>
+                    <li><a data-href="/Shopping/user/administrators" data-title="后台人员管理" href="javascript:void(0)">后台人员管理</a></li>
+
+                </ul>
+                <ul>
                     <li><a data-href="/Shopping/department/revertAlldeps" data-title="部门管理" href="javascript:void(0)">部门管理</a></li>
 
                 </ul>

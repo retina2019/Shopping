@@ -38,6 +38,7 @@
 <%--                    <input type="button" id="submitBtn" name="sub" class="btn btn-success radius"  value="用户登录"/>--%>
                     <a  href="javascript:;" onclick="customer_registor('注册普通用户','/Shopping/registor/user')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 普通用户注册</a>
                     <a  href="javascript:;" onclick="shop_registor('注册商家','/Shopping/registor/shoper')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 商家注册</a>
+                    <a  href="javascript:;" onclick="administrator_registor('后台管理人员注册','/Shopping/registor/administrator')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 后台管理人员注册</a>
                 </td>
             </tr>
         </table>
@@ -72,50 +73,6 @@
                 //});
             }
         }
-        <%--var submit = function(){--%>
-        <%--    if (checkData()){--%>
-        <%--        var data={--%>
-        <%--            userName:$("#userName").val(),--%>
-        <%--            password:$("#password").val()--%>
-        <%--        }--%>
-        <%--        $.ajax({--%>
-        <%--            type: "POST",--%>
-        <%--            url: "/Shopping/login/sendParams",--%>
-        <%--            /* dataType:"json", */--%>
-        <%--            data:JSON.stringify(data),--%>
-        <%--            contentType:"application/json",--%>
-
-        <%--            success : function(result, status, req) {--%>
-        <%--                alert('success:');--%>
-        <%--                console.log("save success");--%>
-        <%--                window.parent.location.reload();--%>
-        <%--            },--%>
-        <%--            error : function(req, status, reason) {--%>
-        <%--                alert('Error:' + reason);--%>
-        <%--            }--%>
-        <%--        });--%>
-        <%--        &lt;%&ndash;var data1={&ndash;%&gt;--%>
-        <%--        &lt;%&ndash;    userName:'#{usermessage.userName}',&ndash;%&gt;--%>
-        <%--        &lt;%&ndash;    password:'#{usermessage.password}'&ndash;%&gt;--%>
-        <%--        &lt;%&ndash;}&ndash;%&gt;--%>
-        <%--        &lt;%&ndash;if(data==data1){&ndash;%&gt;--%>
-        <%--            $("#submitBtn").bind('click', function () {--%>
-        <%--                submit();--%>
-
-        <%--            })--%>
-        <%--    //     }--%>
-        <%--     }--%>
-        <%--}--%>
-        <%--var userName=$("#userName").val();--%>
-        <%--var userName1='#{usermessage.useName}';--%>
-        <%--var password=$("#password").val();--%>
-        <%--var password1='#{usermessage.password}';--%>
-        <%--if(userName==userName1) {--%>
-        <%--    if (password == password1) {--%>
-
-        //     }
-        // }
-
 
         function customer_registor(title,url){
             var index = layer.open({
@@ -126,6 +83,14 @@
             layer.full(index);
         }
         function shop_registor(title,url){
+            var index = layer.open({
+                type: 2,
+                title: title,
+                content: url
+            });
+            layer.full(index);
+        }
+        function administrator_registor(title,url){
             var index = layer.open({
                 type: 2,
                 title: title,
