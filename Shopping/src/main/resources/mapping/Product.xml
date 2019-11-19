@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaweb.mapper.ProductMapper">
+    <select id="queryByConditions" parameterType="string" resultType="com.javaweb.model.Product">
+        select * from PRODUCT
+        <trim prefix="where" prefixOverrides="and">
+            <if test="proId!=null and proId!= ''">
+                and proId=#{proId}
+            </if>
+            <if test="cut!=null and cut!=''">
+                and cut=#{cut}
+            </if>
+            <if test="proName!=null and proName!=''">
+                and proName=#{proName}
+            </if>
+            <if test="proRange!=null and proRange!=''">
+                and proRange=#{proRange}
+            </if>
+            <if test="states!=null and states!=''">
+                and states=#{states}
+            </if>
+            <if test="introduction!=null and introduction!=''">
+                and introduction=#{introduction}
+            </if>
+        </trim>
+        ${orderSql}
+        limit #{startIndex},#{pageSize}
+    </select>
+    <select id="countByConditions" parameterType="string" resultType="int">
+        select count(*) from PRODUCT
+        <trim prefix="where" prefixOverrides="and">
+            <if test="proId!=null and proId!= ''">
+                and proId=#{proId}
+            </if>
+            <if test="cut!=null and cut!=''">
+                and cut=#{cut}
+            </if>
+            <if test="proName!=null and proName!=''">
+                and proName=#{proName}
+            </if>
+            <if test="proRange!=null and proRange!=''">
+                and proRange=#{proRange}
+            </if>
+            <if test="states!=null and states!=''">
+                and states=#{states}
+            </if>
+            <if test="introduction!=null and introduction!=''">
+                and introduction=#{introduction}
+            </if>
+        </trim>
+    </select>
+</mapper>

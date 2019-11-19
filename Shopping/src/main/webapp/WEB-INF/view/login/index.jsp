@@ -58,6 +58,13 @@
 
                 </ul>
             </dd>
+            <dt><i class="Hui-iconfont">&#xe616;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="/Shopping/product/product" data-title="商品管理" href="javascript:void(0)">商品管理</a></li>
+
+                </ul>
+            </dd>
         </dl>
     </div>
 </aside>

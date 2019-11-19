@@ -35,7 +35,7 @@
             <tr>
                 <td width="100%" height="40" align="center" colspan="2">
                     <input id="submitBtn" type="button" name="sub" value="用户登录" class="btn btn-primary radius" onclick="tijiao();">
-<%--                    <input type="button" id="submitBtn" name="sub" class="btn btn-success radius"  value="用户登录"/>--%>
+                    <input type="button" id="submitBtn2" name="sub2" class="btn btn-success radius"  value="用户登录2"/>
                     <a  href="javascript:;" onclick="customer_registor('注册普通用户','/Shopping/registor/user')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 普通用户注册</a>
                     <a  href="javascript:;" onclick="shop_registor('注册商家','/Shopping/registor/shoper')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 商家注册</a>
                     <a  href="javascript:;" onclick="administrator_registor('后台管理人员注册','/Shopping/registor/administrator')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 后台管理人员注册</a>
