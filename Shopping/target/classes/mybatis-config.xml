@@ -20,5 +20,6 @@
         <mapper resource="mapping/Users.xml"/>
         <mapper resource="mapping/Department.xml"/>
         <mapper resource="mapping/Admin.xml"/>
+        <mapper resource="mapping/Product.xml"/>
     </mappers>
 </configuration>
