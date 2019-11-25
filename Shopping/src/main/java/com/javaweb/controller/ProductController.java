@@ -114,4 +114,46 @@ public class ProductController {
         }
         return "test success";
     }
+    @RequestMapping("/editCut")
+    public ModelAndView editCut(HttpServletRequest req, HttpServletResponse response){
+        ModelAndView mv = new ModelAndView();
+        try{
+            String cutId = req.getParameter("cutId");
+            System.out.println("cutId:"+ cutId);
+
+            Category cut = cutService.queryByCutId(cutId);
+            mv.addObject("category", cut);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        mv.setViewName("category/editcategory");
+        return mv;
+    }
+    @RequestMapping(value="/submitcutEdit", method=RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String submitcutEdit(
+            @RequestBody Category cut
+    ) {
+        System.out.println("category.getCutId:"+cut.getCutId());
+        try {
+            cutService.edit(cut);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "submitEdit success";
+    }
+    @RequestMapping(value="/deleteCut", method=RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String deleteCut(
+            @RequestBody Category cut//传递整个对象时用@RequestBody
+    ) {
+        System.out.println("cutId:"+cut.getCutId());
+        try {
+            cutService.deleteByCutId(cut.getCutId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "删除成功！！！";
+    }
 }

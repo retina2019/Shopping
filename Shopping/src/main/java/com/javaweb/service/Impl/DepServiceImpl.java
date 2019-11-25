@@ -33,7 +33,7 @@ public class DepServiceImpl implements DepService {
     }
     @Override
     public Dep queryByDepId(String depId)throws Exception{
-        // TODO Auto-generated method stub
+       // TODO Auto-generated method stub
         System.out.println("queryByDepId:"+depId);
         Dep department=depMapper.queryByDepId(depId);
         return department;

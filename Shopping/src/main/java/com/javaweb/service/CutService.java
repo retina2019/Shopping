@@ -11,4 +11,9 @@ public interface CutService {
 
    public void save(Category cut) throws Exception;
 
+   public Category queryByCutId(String cutId)throws Exception;
+
+   public  void edit(Category cut) throws Exception;
+
+  public  void deleteByCutId(int cutId) throws Exception;
 }

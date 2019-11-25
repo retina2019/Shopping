@@ -19,4 +19,29 @@
         INSERT INTO CATEGORY (cutId,cut,upcutId,upcut,cutDescribe)
                 VALUES (#{cutId},#{cut}, #{upcutId},#{upcut}, #{cutDescribe})
     ]]></insert>
+    <select id="queryByCutId" parameterType="string" resultType="com.javaweb.model.Category">
+        select * from CATEGORY WHERE cutId=#{cutId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.Category">
+    update CATEGORY
+    <trim prefix="set" suffixOverrides=",">
+        <if test="cut != null">
+            cut = #{cut},
+        </if>
+        <if test="upcut!=null">
+            upcut=#{upcut},
+        </if>
+        <if test="cutDescribe!=null">
+            cutDescribe=#{cutDescribe}
+        </if>
+    </trim>
+    <trim prefix="where" prefixOverrides="and">
+        <if test="cutId != null">
+            and cutId = #{cutId}
+        </if>
+    </trim>
+    </update>
+    <delete id="deleteByCutId" >
+        delete from CATEGORY where cutId=#{cutId}
+    </delete>
 </mapper>

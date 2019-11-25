@@ -32,4 +32,23 @@ public class CutServiceImpl implements CutService {
         List<Category> listcut=cutMapper.searchAll();
         return listcut;
     }
+    @Override
+    public Category queryByCutId(String cutId)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("queryByCutId:"+cutId);
+        Category cut=cutMapper.queryByCutId(cutId);
+        return cut;
+    }
+    @Override
+    public  void edit(Category cut) throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("cutService:"+cut.getCutId());
+        cutMapper.edit(cut);
+    }
+    @Override
+    public  void deleteByCutId(int cutId) throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("deleteByCutId:"+cutId);
+        cutMapper.deleteByCutId(cutId);
+    }
 }

@@ -12,4 +12,10 @@ public interface CutMapper extends BaseMapper<Category> {
     void add(Category cut);
 
     List<Category> searchAll();
+
+    Category queryByCutId(@Param("cutId") String cutId);
+
+    void edit(Category cut);
+
+    void deleteByCutId(@Param("cutId") int cutId);
 }
