@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaweb.mapper.CutMapper">
+    <select id="searchByCutId" parameterType="string" resultType="com.javaweb.model.Category">
+        select * from CATEGORY
+        <trim prefix="where" prefixOverrides="and">
+            <if test="cutId != null">
+                and cutId = #{cutId}
+            </if>
+        </trim>
+    </select>
+    <select id="searchAll" parameterType="string" resultType="com.javaweb.model.Category">
+        select * from CATEGORY
+    </select>
+    <insert id="add" parameterType="com.javaweb.model.Category"><![CDATA[
+        INSERT INTO CATEGORY (cutId,cut,upcutId,upcut,cutDescribe)
+                VALUES (#{cutId},#{cut}, #{upcutId},#{upcut}, #{cutDescribe})
+    ]]></insert>
+</mapper>

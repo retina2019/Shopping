@@ -21,5 +21,6 @@
         <mapper resource="mapping/Department.xml"/>
         <mapper resource="mapping/Admin.xml"/>
         <mapper resource="mapping/Product.xml"/>
+        <mapper resource="mapping/Category.xml"/>
     </mappers>
 </configuration>

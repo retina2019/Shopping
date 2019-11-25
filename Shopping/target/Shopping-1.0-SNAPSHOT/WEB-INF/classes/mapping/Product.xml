@@ -37,7 +37,7 @@
         <if test="cut!=null and cut!=''">
             and cut=#{cut}
         </if>
-        <if test="state!=null">
+        <if test="state!=null and state!=''">
             and state=#{state}
         </if>
         </trim>

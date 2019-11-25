@@ -2,9 +2,12 @@ package com.javaweb.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.javaweb.model.Category;
 import com.javaweb.model.Product;
+import com.javaweb.service.CutService;
 import com.javaweb.service.ProductService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +26,8 @@ import java.util.Map;
 public class ProductController {
     @Resource
     private ProductService productService;
+    @Resource
+    private CutService cutService;
 
     @RequestMapping(value = "/product")
     public ModelAndView List(HttpServletRequest req, HttpServletResponse response) {
@@ -65,5 +71,47 @@ public class ProductController {
         String str= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);//JSON.toJSONString中序列化空字符串遇到的坑，当某些字段为空时，转换成字符串时必须加SerializerFeature.WriteMapNullValue
         System.out.println(str);
         return str;
+    }
+    @RequestMapping(value="/revertAllcut")
+    public ModelAndView Listcut(HttpServletRequest req, HttpServletResponse response ) {
+        ModelAndView mv = new ModelAndView();
+        List<Category> listcut = null;
+        try {
+            String cutId = req.getParameter("cutId");
+            System.out.println("cutId:"+ cutId);
+            listcut = cutService.searchByCutId(cutId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mv.addObject("category",listcut);
+        mv.setViewName("category/category");//通过model.addAttribute向前端传入数据
+        return mv;
+
+    }
+    @RequestMapping("/addCut")
+    public ModelAndView addCut(HttpServletRequest req, HttpServletResponse response) throws Exception {
+        Date date = new Date();
+        System.out.println(date.toString()+":add category");
+        ModelAndView mv=new ModelAndView();
+        List<Category> category=cutService.searchAll();
+        mv.addObject("cut",category);
+        mv.setViewName("category/addcategory");
+        return mv;
+    }
+    @RequestMapping(value="/addcategory", method= RequestMethod.POST)
+    @ResponseBody
+    public String addcategory(
+            @RequestBody Category cut//category是对象，要与model里面的相对应，传递整个对象时用@RequestBody
+            , HttpServletResponse response
+    ) {
+
+        System.out.println("cut:"+cut.getCut());
+        try {
+
+            cutService.save(cut);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "test success";
     }
 }
