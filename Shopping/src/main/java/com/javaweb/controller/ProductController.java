@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +32,7 @@ public class ProductController {
     private CutService cutService;
 
     @RequestMapping(value = "/product")
-    public ModelAndView List(HttpServletRequest req, HttpServletResponse response) {
+    public ModelAndView product(HttpServletRequest req, HttpServletResponse response) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("product/product");
         return mv;
@@ -39,7 +41,6 @@ public class ProductController {
     @ResponseBody
     @RequestMapping(value="/getList",method= RequestMethod.GET, produces="text/plain;charset=utf-8")
     public String getList(HttpServletRequest req, HttpServletResponse response) {
-
         List<Product> listproduct = null;
         int count=0;
         try {
@@ -50,16 +51,13 @@ public class ProductController {
             String start = req.getParameter("start");
             String pageSize = req.getParameter("length");
             if(null==pageSize || pageSize.equals("")) pageSize ="10";
-
             String orderNum = req.getParameter("order[0][column]");
             String orderData = req.getParameter("columns["+orderNum+"][data]");
             String orderDir = req.getParameter("order[0][dir]");
             String orderSql = " order by " + orderData + " " + orderDir;
-
             int startIndex = Integer.parseInt(start);
-
-            listproduct = productService.queryByConditions(proId,cut,state,startIndex,Integer.parseInt(pageSize),orderSql);
-            count = productService.countByConditions(proId,cut,state);
+            listproduct=productService.queryByConditions(proId,cut,state,startIndex,Integer.parseInt(pageSize),orderSql);
+            count=productService.countByConditions(proId,cut,state);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,11 +65,12 @@ public class ProductController {
         map.put("data",listproduct);
         map.put("recordsTotal",count);
         map.put("recordsFiltered",count);
-
         String str= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);//JSON.toJSONString中序列化空字符串遇到的坑，当某些字段为空时，转换成字符串时必须加SerializerFeature.WriteMapNullValue
         System.out.println(str);
         return str;
     }
+
+
     @RequestMapping(value="/revertAllcut")
     public ModelAndView Listcut(HttpServletRequest req, HttpServletResponse response ) {
         ModelAndView mv = new ModelAndView();
@@ -156,4 +155,5 @@ public class ProductController {
         }
         return "删除成功！！！";
     }
+
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: stone
-  Date: 2019-11-23
-  Time: 21:38
+  Date: 2019-11-19
+  Time: 12:57
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,7 +19,6 @@
 <link rel="stylesheet" type="text/css" href="/Shopping/H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="/Shopping/H-ui.admin/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="/Shopping/H-ui.admin/static/h-ui.admin/css/style.css" />
-
 
 <body>
 <nav class="breadcrumb">
@@ -166,4 +165,5 @@
     });
 </script>
 </body>
+
 </html>

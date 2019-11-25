@@ -14,4 +14,7 @@ public interface ProductMapper {
     List<Product> queryByConditions(@Param("proId") String proId, @Param("cut") String cut,
                                     @Param("state") int state, @Param("startIndex") int startIndex,
                                     @Param("pageSize") int pageSize, @Param("orderSql") String orderSql);
+
+
+
 }

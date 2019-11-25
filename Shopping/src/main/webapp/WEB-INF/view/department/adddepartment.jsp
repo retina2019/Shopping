@@ -50,7 +50,7 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <select name="updepName" id="updepName" class="input-text"value="">
                     <c:forEach items="${department}" var="dep">
-                        <option value="${dep.depId}">
+                        <option value="${dep.depName}">
                                 ${dep.depName}
                         </option>
                     </c:forEach>

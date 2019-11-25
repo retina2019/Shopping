@@ -50,7 +50,7 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <select name="upcut" id="upcut" class="input-text"value="">
                     <c:forEach items="${cut}" var="category">
-                        <option value="${category.cutId}">
+                        <option value="${category.cut}">
                                 ${category.cut}
                         </option>
                     </c:forEach>
