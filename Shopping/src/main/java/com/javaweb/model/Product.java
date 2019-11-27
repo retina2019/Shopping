@@ -2,6 +2,7 @@ package com.javaweb.model;
 
 public class Product {
     public int proId;
+    public int cutId;
     public String cut;
     public String proName;
     public String proRange;
@@ -21,6 +22,14 @@ public class Product {
 
     public void setProId(int proId) {
         this.proId = proId;
+    }
+
+    public int getCutId() {
+        return cutId;
+    }
+
+    public void setCutId(int cutId) {
+        this.cutId = cutId;
     }
 
     public String getCut() {

@@ -62,7 +62,7 @@
             <dd>
                 <ul>
 
-                    <li><a data-href="/Shopping/organization/organizationchart" data-title="商品组织架构图" href="javascript:void(0)">商品组织架构图</a></li>
+                    <li><a data-href="/Shopping/organization/organization" data-title="商品组织架构图" href="javascript:void(0)">商品组织架构图</a></li>
 
                 </ul>
                 <ul>

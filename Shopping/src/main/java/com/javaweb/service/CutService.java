@@ -16,4 +16,5 @@ public interface CutService {
    public  void edit(Category cut) throws Exception;
 
   public  void deleteByCutId(int cutId) throws Exception;
+
 }

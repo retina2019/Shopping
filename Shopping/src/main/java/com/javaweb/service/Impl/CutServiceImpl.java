@@ -51,4 +51,5 @@ public class CutServiceImpl implements CutService {
         System.out.println("deleteByCutId:"+cutId);
         cutMapper.deleteByCutId(cutId);
     }
+
 }

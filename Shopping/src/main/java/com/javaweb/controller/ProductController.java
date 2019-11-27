@@ -69,7 +69,16 @@ public class ProductController {
         System.out.println(str);
         return str;
     }
-
+@RequestMapping(value="/addProduct")
+public ModelAndView addProduct(HttpServletRequest req, HttpServletResponse response) throws Exception {
+    Date date = new Date();
+    System.out.println(date.toString()+":add product");
+    ModelAndView mv=new ModelAndView();
+    List<Category> cut=cutService.searchAll();
+    mv.addObject("category",cut);
+    mv.setViewName("product/addproduct");
+    return mv;
+}
 
     @RequestMapping(value="/revertAllcut")
     public ModelAndView Listcut(HttpServletRequest req, HttpServletResponse response ) {
