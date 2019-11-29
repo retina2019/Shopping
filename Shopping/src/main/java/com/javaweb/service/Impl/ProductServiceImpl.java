@@ -34,4 +34,23 @@ public  class ProductServiceImpl implements ProductService {
         System.out.println("product service:" + product.getProName());
         productMapper.add(product);
     }
+    @Override
+    public  Product queryByproId(String proId) throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("queryByproId:"+proId);
+        Product product=productMapper.queryByproId(proId);
+        return product;
+    }
+    @Override
+    public void edit(Product product)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("productservice:"+product.getProId());
+        productMapper.edit(product);
+    }
+    @Override
+    public void deleteByProId(String proId)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("deleteByProId:"+proId);
+        productMapper.deleteByProId(proId);
+    }
 }

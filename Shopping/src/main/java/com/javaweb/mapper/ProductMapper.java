@@ -18,4 +18,10 @@ public interface ProductMapper extends BaseMapper<Product> {
 
 
     void add(Product product);
+
+    Product queryByproId(@Param("proId") String proId);
+
+    void edit(Product product);
+
+    void deleteByProId(String proId);
 }

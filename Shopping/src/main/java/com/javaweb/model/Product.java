@@ -1,7 +1,7 @@
 package com.javaweb.model;
 
 public class Product {
-    public int proId;
+    public String proId;
     public int cutId;
     public String cut;
     public String proName;
@@ -14,11 +14,11 @@ public class Product {
     public float quantity;
 
 
-    public int getProId() {
+    public String getProId() {
         return proId;
     }
 
-    public void setProId(int proId) {
+    public void setProId(String proId) {
         this.proId = proId;
     }
 

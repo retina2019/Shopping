@@ -39,4 +39,47 @@
         INSERT INTO PRODUCT (proId,cutId,cut,proName,logistical,state,photo,introduction,price,scale,quantity)
                 VALUES (#{proId},#{cutId},#{cut}, #{proName},#{logistical},#{state},#{photo},#{introduction},#{price},#{scale},#{quantity})
     ]]></insert>
+    <select id="queryByproId" parameterType="string" resultType="com.javaweb.model.Product">
+        select * from PRODUCT where proId=#{proId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.Product">
+        update PRODUCT
+        <trim prefix="set" suffixOverrides=",">
+            <if test="cutId!= null">
+                cutId = #{cutId},
+            </if>
+            <if test="proName!=null">
+                proName=#{proName},
+            </if>
+            <if test="logistical!=null">
+                logistical=#{logistical},
+            </if>
+            <if test="state!=null">
+                state=#{state},
+            </if>
+            <if test="photo!=null">
+                photo=#{photo},
+            </if>
+            <if test="introduction!=null">
+                introduction=#{introduction},
+            </if>
+            <if test="price!=null">
+                price=#{price},
+            </if>
+            <if test="scale!=null">
+                scale=#{scale},
+            </if>
+            <if test="quantity!=null">
+                quantity=#{quantity},
+            </if>
+        </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="proId != null">
+                and proId = #{proId}
+            </if>
+        </trim>
+    </update>
+    <delete id="deleteByProId" >
+        delete from PRODUCT where proId=#{proId}
+    </delete>
 </mapper>

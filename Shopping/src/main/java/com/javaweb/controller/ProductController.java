@@ -182,4 +182,48 @@ public ModelAndView addProduct(HttpServletRequest req, HttpServletResponse respo
         return "删除成功！！！";
     }
 
+    @RequestMapping("/editProduct")
+    public ModelAndView editProduct(HttpServletRequest req, HttpServletResponse response){
+        ModelAndView mv = new ModelAndView();
+        try{
+            String proId = req.getParameter("proId");
+            System.out.println("proId:"+ proId);
+
+            Product product=productService.queryByproId(proId);
+            List<Category> cut=cutService.searchAll();
+            mv.addObject("category",cut);
+            mv.addObject("product",product);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        mv.setViewName("product/editproduct");
+        return mv;
+    }
+    @RequestMapping(value="/submitProductEdit", method=RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String submitProductEdit(
+            @RequestBody Product product
+    ) {
+        System.out.println("product.getProId:"+product.getProId());
+        try {
+            productService.edit(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "submitEdit success";
+    }
+    @RequestMapping(value="/deleteProduct", method=RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String deleteProduct(
+            @RequestBody Product product//传递整个对象时用@RequestBody
+    ) {
+        System.out.println("deletebyproId:"+product.getProId());
+        try {
+            productService.deleteByProId(product.getProId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "删除成功！！！";
+    }
 }
