@@ -10,4 +10,5 @@ public interface ProductService  {
 
    public int countByConditions(String proId, String cut, int state)throws Exception;
 
+   public void save(Product product)throws Exception;
 }

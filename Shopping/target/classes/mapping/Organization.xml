@@ -5,8 +5,11 @@
 
 <mapper namespace="com.javaweb.mapper.OrganizationMapper">
     <select id="getTree" parameterType="String" resultType="com.javaweb.model.Organization">
-        select cutId as id,upcutId as pId,upcut as name,true as isParent from CATEGORY
+        select cutId as id,upcutId as pId,cut as name,true as isParent from CATEGORY
+    </select>
+    <select id="getTree2" parameterType="String" resultType="com.javaweb.model.Organization">
+        select cutId as id,upcutId as pId,cut as name,true as isParent from CATEGORY
         union
-        select proId as id,cutId as pId,cut as name,false as isParent from PRODUCT
+        select proId as id,cutId as pId,proName as name,false as isParent from PRODUCT
     </select>
 </mapper>

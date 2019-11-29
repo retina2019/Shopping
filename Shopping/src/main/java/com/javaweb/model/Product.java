@@ -5,16 +5,14 @@ public class Product {
     public int cutId;
     public String cut;
     public String proName;
-    public String proRange;
     public String logistical;
     public int state;
     public String photo;
-    public int  introduction;
-    public float orig;
-    public float current;
+    public int introduction;
+    public float price;
     public float scale;
     public float quantity;
-    public String warehousetime;
+
 
     public int getProId() {
         return proId;
@@ -48,13 +46,6 @@ public class Product {
         this.proName = proName;
     }
 
-    public String getProRange() {
-        return proRange;
-    }
-
-    public void setProRange(String proRange) {
-        this.proRange = proRange;
-    }
 
     public String getLogistical() {
         return logistical;
@@ -88,20 +79,12 @@ public class Product {
         this.introduction = introduction;
     }
 
-    public float getOrig() {
-        return orig;
+    public float getPrice() {
+        return price;
     }
 
-    public void setOrig(float orig) {
-        this.orig = orig;
-    }
-
-    public float getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(float current) {
-        this.current = current;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public float getScale() {
@@ -120,11 +103,4 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getWarehousetime() {
-        return warehousetime;
-    }
-
-    public void setWarehousetime(String warehousetime) {
-        this.warehousetime = warehousetime;
-    }
 }

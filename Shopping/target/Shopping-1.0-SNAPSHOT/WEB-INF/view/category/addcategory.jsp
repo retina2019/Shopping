@@ -46,6 +46,18 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">上级商品分类Id：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="upcutId" id="upcutId" class="input-text"value="">
+                    <c:forEach items="${cut}" var="category">
+                        <option value="${category.cutId}">
+                                ${category.cut}
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">上级商品分类：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <select name="upcut" id="upcut" class="input-text"value="">
@@ -100,6 +112,7 @@
             var data= {
                 cutId: $("#cutId").val(),
                 cut: $("input[name='cut']").val(),
+                upcutId:$("#upcutId").val(),
                 upcut: $("#upcut").val(),
                 cutDescribe: $("#cutDescribe").val()
             }

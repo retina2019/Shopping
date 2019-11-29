@@ -28,4 +28,10 @@ public  class ProductServiceImpl implements ProductService {
         int count = productMapper.countByConditions(proId, cut, state);
         return count;
     }
+    @Override
+    public void save(Product product)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("product service:" + product.getProName());
+        productMapper.add(product);
+    }
 }

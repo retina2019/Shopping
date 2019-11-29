@@ -69,6 +69,7 @@ public class ProductController {
         System.out.println(str);
         return str;
     }
+
 @RequestMapping(value="/addProduct")
 public ModelAndView addProduct(HttpServletRequest req, HttpServletResponse response) throws Exception {
     Date date = new Date();
@@ -80,6 +81,22 @@ public ModelAndView addProduct(HttpServletRequest req, HttpServletResponse respo
     return mv;
 }
 
+    @RequestMapping(value="/addProductMessage", method= RequestMethod.POST)
+    @ResponseBody
+    public String addProductMessage(
+            @RequestBody Product product//product是对象，要与model里面的相对应，传递整个对象时用@RequestBody
+            , HttpServletResponse response
+    ) {
+
+        System.out.println("proName:"+product.getProName());
+        try {
+
+            productService.save(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "test success";
+    }
     @RequestMapping(value="/revertAllcut")
     public ModelAndView Listcut(HttpServletRequest req, HttpServletResponse response ) {
         ModelAndView mv = new ModelAndView();

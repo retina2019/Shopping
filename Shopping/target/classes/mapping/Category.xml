@@ -28,6 +28,9 @@
         <if test="cut != null">
             cut = #{cut},
         </if>
+        <if test="upcutId!=null">
+            upcutId=#{upcutId},
+        </if>
         <if test="upcut!=null">
             upcut=#{upcut},
         </if>

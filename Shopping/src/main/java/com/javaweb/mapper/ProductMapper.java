@@ -2,10 +2,11 @@ package com.javaweb.mapper;
 
 import com.javaweb.model.Product;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-public interface ProductMapper {
+@Repository
+public interface ProductMapper extends BaseMapper<Product> {
     List<Product> searchByProId(@Param("proId") String proId);
 
 
@@ -16,5 +17,5 @@ public interface ProductMapper {
                                     @Param("pageSize") int pageSize, @Param("orderSql") String orderSql);
 
 
-
+    void add(Product product);
 }

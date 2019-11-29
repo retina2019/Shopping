@@ -32,5 +32,12 @@ public class OrganizationController {
         List<Organization> list=organizationService.getTree(id);
         return list;
     }
+    @RequestMapping("getTreeDate2")
+    @ResponseBody
+    public List<Organization> getTreeDate2(@RequestParam(defaultValue="0")int  id) throws Exception {
+
+        List<Organization> list=organizationService.getTree2(id);
+        return list;
+    }
 
 }

@@ -37,8 +37,10 @@
 
 </head>
 <body>
-<a href="javascript:;" name="submit" id="submitBtn"  onclick="organization()"><i class="Hui-iconfont">&#xe665;</i> 查看商品分类图</a>
+<a href="javascript:;" name="submit" id="submitBtn"  onclick="organization()"><i class="Hui-iconfont">&#xe665;</i> 查看商品分类图</a><br/>
+<a href="javascript:;" name="submitProduct" id="submitBtnProduct"  onclick="product()"><i class="Hui-iconfont">&#xe665;</i> 查看商品分布图</a>
 <div >
+    <ul id="treeDemo1" class="ztree"></ul>
     <ul id="treeDemo2" class="ztree"></ul>
 </div>
 <script type="text/javascript">
@@ -50,15 +52,30 @@
              dataType: "json",
              url: "/Shopping/organization/getTreeDate",
              async: true,
-             data: $("#treeDemo2").serialize(),//serialize()获取序列值，获取id为treeDemo2的序列值
+             data: $("#treeDemo1").serialize(),//serialize()获取序列值，获取id为treeDemo2的序列值
              success: function (data) {
-                 $.fn.zTree.init($("#treeDemo2"), setting, data);
+                 $.fn.zTree.init($("#treeDemo1"), setting, data);
              },
              error: function () {
                  alert("异常！")
              }
          })
      }
+    function product() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/Shopping/organization/getTreeDate2",
+            async: true,
+            data: $("#treeDemo2").serialize(),//serialize()获取序列值，获取id为treeDemo2的序列值
+            success: function (data) {
+                $.fn.zTree.init($("#treeDemo2"), setting, data);
+            },
+            error: function () {
+                alert("异常！")
+            }
+        })
+    }
 </script>
 </body>
 </html>

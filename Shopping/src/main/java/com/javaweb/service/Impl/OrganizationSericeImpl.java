@@ -18,4 +18,10 @@ public class OrganizationSericeImpl implements OrganizationService {
         List<Organization> organizationList=organizationMapper.getTree(id);
         return organizationList;
     }
+    @Override
+    public List<Organization> getTree2(int id)throws Exception{
+        // TODO Auto-generated method stub
+        List<Organization> organizationList=organizationMapper.getTree2(id);
+        return organizationList;
+    }
 }

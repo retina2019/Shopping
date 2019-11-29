@@ -35,4 +35,8 @@
         </if>
         </trim>
     </select>
+    <insert id="add" parameterType="com.javaweb.model.Product"><![CDATA[
+        INSERT INTO PRODUCT (proId,cutId,cut,proName,logistical,state,photo,introduction,price,scale,quantity)
+                VALUES (#{proId},#{cutId},#{cut}, #{proName},#{logistical},#{state},#{photo},#{introduction},#{price},#{scale},#{quantity})
+    ]]></insert>
 </mapper>

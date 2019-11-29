@@ -2,10 +2,10 @@ package com.javaweb.model;
 
 public class Organization {
  private int id;
- private String upcut;
- private String name;
- private boolean open;
- private boolean isParent;
+ private int pId;
+    private String name;
+    private boolean open;
+    private boolean isParent;
 
     public int getId() {
         return id;
@@ -15,12 +15,12 @@ public class Organization {
         this.id = id;
     }
 
-    public String getUpcut() {
-        return upcut;
+    public int getpId() {
+        return pId;
     }
 
-    public void setUpcut(String upcut) {
-        this.upcut = upcut;
+    public void setpId(int pId) {
+        this.pId = pId;
     }
 
     public String getName() {

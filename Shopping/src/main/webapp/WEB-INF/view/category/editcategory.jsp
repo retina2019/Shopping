@@ -40,7 +40,13 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">上级商品分类：</label>
+            <label class="form-label col-xs-4 col-sm-2">上级商品分类ID：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="upcutId" id="upcutId" class="input-text"value="${category.upcutId}">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">上级商品分类名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" name="upcut" id="upcut" class="input-text"value="${category.upcut}">
             </div>
@@ -78,6 +84,7 @@
             var data={
                 cutId:$("#cutId").val(),
                 cut:$("#cut").val(),
+                upcutId:$("#upcutId").val(),
                 upcut:$("#upcut").val(),
                 cutDescribe:$("#cutDescribe").val()
             }

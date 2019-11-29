@@ -52,7 +52,7 @@
                 <th>商品名称</th>
                 <th>商品状态</th>
                 <th>图片</th>
-                <th>现价</th>
+                <th>价格</th>
                 <th>销量</th>
                 <th>库存</th>
                 <th>操作</th>
@@ -101,7 +101,7 @@
                     }
                 },
                 { "data": "proId" },
-                { "data": "cut" },
+                { "data": "cutId" },
                 { "data": "proName" },
                 { "data": "state","render":function (data,type,row,meta) {
                         var a="";
@@ -110,7 +110,7 @@
                         return a;
                     } } ,
                 { "data": "photo" } ,
-                { "data": "current" } ,
+                { "data": "price" } ,
                 { "data": "scale" } ,
                 { "data": "quantity" } ,
                 {"data":null,"render":function (data,type,row,meta) {
