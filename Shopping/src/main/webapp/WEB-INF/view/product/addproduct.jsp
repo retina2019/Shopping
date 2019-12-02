@@ -5,8 +5,7 @@
   Time: 10:14
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- 引入C标签 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,7 +30,7 @@
 <link type="text/css" rel="stylesheet" href="/Shopping/H-ui.admin/static/h-ui/css/H-ui.css"/>
 <link type="text/css" rel="stylesheet" href="/Shopping/H-ui.admin/static/h-ui.admin/css/H-ui.admin.css"/>
 <div class="page-container">
-    <form  id="addproduct" class="form form-horizontal"action="/" method="POST">
+    <form  id="addproduct" class="form form-horizontal"action="/" method="POST" enctype="multipart/form-data">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商品编码：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -69,13 +68,7 @@
                 <input type="radio"   name="state" value="1"/>下架
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">商品图片：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="file" id="photo">
-                <input type="button" class="btn btn-default btn-uploadstar radius ml-10" id="" name="" value="上传">
-            </div>
-        </div>
+
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">是否推荐：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -99,6 +92,16 @@
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商品库存数量：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text"  class="input-text"  id="quantity" name="quantity"  >
+            </div>
+        </div>
+
+    </form>
+    <form action="/Shopping/product/photo" method="post" enctype="multipart/form-data">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">商品图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="file" id="photo" name="photo">
+                <input type="submit" class="btn btn-default btn-uploadstar radius ml-10" id="" name="" value="上传">
             </div>
         </div>
         <div class="row cl">

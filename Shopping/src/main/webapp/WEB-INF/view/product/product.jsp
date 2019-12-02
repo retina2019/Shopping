@@ -109,7 +109,7 @@
                         if(data==1){a="下架"}
                         return a;
                     } } ,
-                { "data": "photo" } ,
+                { "data": "photo"} ,
                 { "data": "price" } ,
                 { "data": "scale" } ,
                 { "data": "quantity" } ,
@@ -123,6 +123,7 @@
 
         } );
     }
+    
     function product_add(title,url){
         var index = layer.open({
             type: 2,

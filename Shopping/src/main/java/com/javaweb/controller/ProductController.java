@@ -6,22 +6,24 @@ import com.javaweb.model.Category;
 import com.javaweb.model.Product;
 import com.javaweb.service.CutService;
 import com.javaweb.service.ProductService;
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.Date;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 @RequestMapping("/product")
@@ -226,4 +228,30 @@ public ModelAndView addProduct(HttpServletRequest req, HttpServletResponse respo
         }
         return "删除成功！！！";
     }
+
+
+    @RequestMapping(value = "/photo",method=RequestMethod.POST)
+    @ResponseBody //不写会默认返回当前路径！！
+    public String photo(MultipartFile photo,HttpServletRequest req)throws Exception, IOException {
+        //接收文件数据
+        System.out.println(photo.getContentType());//  image/jpeg   获取上传文件的类型
+        System.out.println(photo.getName());//photo  获取file标签的name属性  <input type="file" name="photo" >
+        System.out.println(photo.getOriginalFilename());//1.jpg   获取上传文件的名称
+
+        //把文件对象,以流的方式写出到file的文件夹中
+        //动态获取上传文件夹的路径
+        ServletContext context = req.getSession().getServletContext();
+        String rootPath="";
+        String realpath =rootPath+context.getRealPath("/file");
+        //创建保存到服务器的文件的路径，使用时间戳改变文件名，以免重名
+        //获取本地存储位置的绝对路径（webapp下的文件）
+        String filename=photo.getOriginalFilename();//获取上传时的文件名称
+        System.out.println(filename);
+        String f=new Date().getTime()+"."+FilenameUtils.getExtension(filename);
+//        String path= realpath +"/"+ new Date().getTime() + photo.getOriginalFilename();
+        File newFile = new File(realpath,f);
+        photo.transferTo(newFile);
+        return "上传成功";
+    }
+
 }
