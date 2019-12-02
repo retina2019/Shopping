@@ -96,7 +96,7 @@
         </div>
 
     </form>
-    <form action="/Shopping/product/photo" method="post" enctype="multipart/form-data">
+    <form class="form form-horizontal" action="/Shopping/product/photo" method="post" enctype="multipart/form-data">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">商品图片：</label>
             <div class="formControls col-xs-8 col-sm-9">

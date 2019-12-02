@@ -66,13 +66,7 @@
                 </select>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">商品图片：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="file" id="photo">
-                <input type="button" class="btn btn-default btn-uploadstar radius ml-10" id="" name="" value="上传">
-            </div>
-        </div>
+
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">是否推荐:</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -98,6 +92,16 @@
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品库存:</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" id="quantity" class="input-text"value=${product.quantity}><!-- product对应的是controller里的对象名称 -->
+            </div>
+        </div>
+
+    </form>
+    <form class="form form-horizontal" action="/Shopping/product/photo" method="post" enctype="multipart/form-data">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">商品图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="file" id="photo" name="photo">
+                <input type="submit" class="btn btn-default btn-uploadstar radius ml-10" id="" name="" value="上传">
             </div>
         </div>
         <div class="row cl">

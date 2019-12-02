@@ -123,7 +123,7 @@
 
         } );
     }
-    
+
     function product_add(title,url){
         var index = layer.open({
             type: 2,
