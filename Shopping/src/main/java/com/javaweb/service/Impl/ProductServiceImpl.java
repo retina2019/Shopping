@@ -15,17 +15,17 @@ public  class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> queryByConditions(String proId, String cut, int state, int startIndex, int pageSize, String orderSql)throws Exception{
+    public List<Product> queryByConditions(String proId, String cutId, int state, int startIndex, int pageSize, String orderSql)throws Exception{
         // TODO Auto-generated method stub
-        System.out.println("searchByConditions:"+proId+cut+state);
-        List<Product> product=productMapper.queryByConditions(proId,cut,state,startIndex,pageSize,orderSql);
+        System.out.println("searchByConditions:"+proId+cutId+state);
+        List<Product> product=productMapper.queryByConditions(proId,cutId,state,startIndex,pageSize,orderSql);
         return product;
     }
     @Override
-    public int countByConditions(String proId, String cut, int state)throws Exception {
+    public int countByConditions(String proId, String cutId, int state)throws Exception {
         // TODO Auto-generated method stub
-        System.out.println("countByConditions:" + proId + cut + state);
-        int count = productMapper.countByConditions(proId, cut, state);
+        System.out.println("countByConditions:" + proId + cutId + state);
+        int count = productMapper.countByConditions(proId, cutId, state);
         return count;
     }
     @Override

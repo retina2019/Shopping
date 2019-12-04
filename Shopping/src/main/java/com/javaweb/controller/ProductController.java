@@ -5,24 +5,25 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.javaweb.model.Category;
 import com.javaweb.model.Product;
 import com.javaweb.service.CutService;
+import com.javaweb.service.ExcelService;
 import com.javaweb.service.ProductService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.*;
 
 @Controller
@@ -32,6 +33,8 @@ public class ProductController {
     private ProductService productService;
     @Resource
     private CutService cutService;
+    @Resource
+    private ExcelService excelService;
 
     @RequestMapping(value = "/product")
     public ModelAndView product(HttpServletRequest req, HttpServletResponse response) {
@@ -48,7 +51,7 @@ public class ProductController {
         try {
             response.setContentType("text/html;charset=utf-8");
             String proId = req.getParameter("proId");
-            String cut=req.getParameter("cut");
+            String cutId=req.getParameter("cutId");
             int state= Integer.parseInt(req.getParameter("state"));
             String start = req.getParameter("start");
             String pageSize = req.getParameter("length");
@@ -58,8 +61,8 @@ public class ProductController {
             String orderDir = req.getParameter("order[0][dir]");
             String orderSql = " order by " + orderData + " " + orderDir;
             int startIndex = Integer.parseInt(start);
-            listproduct=productService.queryByConditions(proId,cut,state,startIndex,Integer.parseInt(pageSize),orderSql);
-            count=productService.countByConditions(proId,cut,state);
+            listproduct=productService.queryByConditions(proId,cutId,state,startIndex,Integer.parseInt(pageSize),orderSql);
+            count=productService.countByConditions(proId,cutId,state);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -253,5 +256,26 @@ public ModelAndView addProduct(HttpServletRequest req, HttpServletResponse respo
         photo.transferTo(newFile);
         return "上传成功";
     }
+    @RequestMapping(value="/download_excel1")
 
+//获取url链接上的参数
+    public @ResponseBody String download(HttpServletResponse response, @RequestParam("proId") String proId, @RequestParam("name") String name){
+        response.setContentType("application/binary;charset=UTF-8");
+        try{
+            ServletOutputStream out=response.getOutputStream();
+            try {
+                //设置文件头：最后一个参数是设置下载文件名(这里我们叫：张三.pdf)
+                response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(name+".xls", "UTF-8"));
+            } catch (UnsupportedEncodingException e1) {
+                e1.printStackTrace();
+            }
+
+            String[] titles = { "proId", "cutId", "proName", "logistical","state","photo","introduction","price","scale","quantity"};
+            excelService.export(titles, out);
+            return "success";
+        } catch(Exception e){
+            e.printStackTrace();
+            return "导出信息失败";
+        }
+    }
 }

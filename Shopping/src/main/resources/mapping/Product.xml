@@ -10,8 +10,8 @@
             <if test="proId!=null and proId!= ''">
                 and proId=#{proId}
             </if>
-            <if test="cut!=null and cut!=''">
-                and cut=#{cut}
+            <if test="cutId!=null and cutId!=''">
+                and cutId=#{cutId}
             </if>
 
             <if test="state!=null and state!=''">
@@ -27,8 +27,8 @@
         <if test="proId!=null and proId!= ''">
             and proId=#{proId}
         </if>
-        <if test="cut!=null and cut!=''">
-            and cut=#{cut}
+        <if test="cutId!=null and cutId!=''">
+            and cutId=#{cutId}
         </if>
         <if test="state!=null and state!=''">
             and state=#{state}
@@ -82,4 +82,7 @@
     <delete id="deleteByProId" >
         delete from PRODUCT where proId=#{proId}
     </delete>
+    <select id="queryAll" parameterType="string" resultType="com.javaweb.model.Product">
+        select * from PRODUCT
+    </select>
 </mapper>

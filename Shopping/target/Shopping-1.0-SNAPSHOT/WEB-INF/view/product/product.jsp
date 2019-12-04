@@ -33,13 +33,16 @@
 
     <div>
         <input type="text" name="" id="proId" placeholder="商品编号/条码编号" style="width:120px" class="input-text">
-        <input type="text" name="" id="cut" placeholder="商品分类" style="width:120px" class="input-text">
+        <input type="text" name="" id="cutId" placeholder="商品分类编号" style="width:120px" class="input-text">
         <select name="" id="state" placeholder="状态" style="width:120px" class="input-text">
             <option value="0">上架</option>
             <option value="1">下架</option>
         </select>
         <a href="javascript:;" name="submit" id="submitBtn" class="btn btn-success btn btn-success radius " onclick="product_search()"><i class="Hui-iconfont">&#xe665;</i> 搜索</a>
         <a  href="javascript:;" name="" id="" class="btn btn-primary radius" onclick="product_add('添加商品','/Shopping/product/addProduct')"><i class="Hui-iconfont">&#xe600;</i> 添加</a>
+        <form action="/Shopping/product/download_excel1">
+            <input type="button" value="报表导出" onclick="download()"/>
+        </form>
 
     </div>
     <div class="mt-20">
@@ -76,10 +79,10 @@
     var getParamsUrl = function(){
 
         var proId=$("#proId").val();
-        var cut=$("#cut").val();
+        var cutId=$("#cutId").val();
         var state=$("#state").val();
         console.log(this);
-        return url+"?proId="+proId+"&cut="+cut+"&state="+state;
+        return url+"?proId="+proId+"&cutId="+cutId+"&state="+state;
     }
     var table;
     function product_search(){
@@ -164,6 +167,11 @@
     $(document).ready(function() {
         product_search();
     });
+
+    function download(){
+        var url="download_excel1?proId=112901&name=商品信息表";
+        window.open(url);
+    }
 </script>
 </body>
 

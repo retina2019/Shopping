@@ -10,9 +10,9 @@ public interface ProductMapper extends BaseMapper<Product> {
     List<Product> searchByProId(@Param("proId") String proId);
 
 
-    int countByConditions(@Param("proId") String proId,@Param("cut") String cut, @Param("state") int state);
+    int countByConditions(@Param("proId") String proId,@Param("cutId") String cutId, @Param("state") int state);
 
-    List<Product> queryByConditions(@Param("proId") String proId, @Param("cut") String cut,
+    List<Product> queryByConditions(@Param("proId") String proId, @Param("cutId") String cutId,
                                     @Param("state") int state, @Param("startIndex") int startIndex,
                                     @Param("pageSize") int pageSize, @Param("orderSql") String orderSql);
 
@@ -24,4 +24,5 @@ public interface ProductMapper extends BaseMapper<Product> {
     void edit(Product product);
 
     void deleteByProId(String proId);
+    List<Product> queryAll();
 }
