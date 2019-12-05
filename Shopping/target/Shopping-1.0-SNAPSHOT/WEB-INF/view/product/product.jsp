@@ -41,7 +41,10 @@
         <a href="javascript:;" name="submit" id="submitBtn" class="btn btn-success btn btn-success radius " onclick="product_search()"><i class="Hui-iconfont">&#xe665;</i> 搜索</a>
         <a  href="javascript:;" name="" id="" class="btn btn-primary radius" onclick="product_add('添加商品','/Shopping/product/addProduct')"><i class="Hui-iconfont">&#xe600;</i> 添加</a>
         <form action="/Shopping/product/download_excel1">
-            <input type="button" value="报表导出" onclick="download()"/>
+            <input type="button"class="btn btn-success btn btn-success radius " value="无条件报表导出" onclick="download1()"/>
+        </form>
+        <form action="/Shopping/product/download_excel2">
+            <input type="button" class="btn btn-primary radius"value="按条件报表导出" onclick="download2()"/>
         </form>
 
     </div>
@@ -168,8 +171,16 @@
         product_search();
     });
 
-    function download(){
+    function download1(){
         var url="download_excel1?proId=112901&name=商品信息表";
+        window.open(url);
+    }
+    function download2(){
+        var proId=$("#proId").val();
+        var cutId=$("#cutId").val();
+        var state=$("#state").val();
+        console.log(this);
+        var url="download_excel2?proId="+proId+"&cutId="+cutId+"&state="+state+"&name=商品信息表";
         window.open(url);
     }
 </script>

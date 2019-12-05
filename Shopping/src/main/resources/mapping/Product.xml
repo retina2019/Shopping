@@ -85,4 +85,19 @@
     <select id="queryAll" parameterType="string" resultType="com.javaweb.model.Product">
         select * from PRODUCT
     </select>
+    <select id="searchByConditions" parameterType="string" resultType="com.javaweb.model.Product">
+        select * from PRODUCT
+        <trim prefix="where" prefixOverrides="and">
+            <if test="proId!=null and proId!= ''">
+                and proId=#{proId}
+            </if>
+            <if test="cutId!=null and cutId!=''">
+                and cutId=#{cutId}
+            </if>
+
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+        </trim>
+    </select>
 </mapper>

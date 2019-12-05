@@ -25,4 +25,6 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     void deleteByProId(String proId);
     List<Product> queryAll();
+
+    List<Product> searchByConditions(@Param("proId") String proId, @Param("cutId") String cutId, @Param("state") String state);
 }

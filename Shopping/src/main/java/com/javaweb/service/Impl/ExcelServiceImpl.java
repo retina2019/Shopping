@@ -15,6 +15,13 @@ public class ExcelServiceImpl implements ExcelService {
     @Autowired
     ProductMapper productMapper;
     @Override
+    public List<Product> searchByConditions(String proId, String cutId, String state)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("searchByConditions:"+proId+cutId+state);
+        List<Product> product=productMapper.searchByConditions(proId,cutId,state);
+        return product;
+    }
+    @Override
     public void export(String[] titles, ServletOutputStream out)throws Exception{
         try{
             // 第一步，创建一个workbook，对应一个Excel文件
@@ -120,4 +127,5 @@ public class ExcelServiceImpl implements ExcelService {
 
         }
     }
+
 }
