@@ -53,4 +53,10 @@ public  class ProductServiceImpl implements ProductService {
         System.out.println("deleteByProId:"+proId);
         productMapper.deleteByProId(proId);
     }
+    @Override
+    public List<Product> queryAll() throws Exception{
+        // TODO Auto-generated method stub
+        List<Product> listproduct=productMapper.queryAll();
+        return listproduct;
+    }
 }

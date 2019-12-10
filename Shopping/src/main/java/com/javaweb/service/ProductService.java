@@ -17,4 +17,6 @@ public interface ProductService  {
    public void edit(Product product)throws Exception;
 
     public void deleteByProId(String proId)throws Exception;
+
+    public List<Product> queryAll() throws Exception;
 }

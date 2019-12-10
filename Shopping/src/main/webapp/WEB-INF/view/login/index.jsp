@@ -73,6 +73,13 @@
                     <li><a data-href="/Shopping/product/product" data-title="商品管理" href="javascript:void(0)">商品管理</a></li>
                 </ul>
             </dd>
+            <dt>商品统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="/Shopping/echarts/echart" data-title="每日库存商品统计" href="javascript:void(0)">每日库存商品统计</a></li>
+                </ul>
+
+            </dd>
         </dl>
     </div>
 </aside>

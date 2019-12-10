@@ -23,5 +23,6 @@
         <mapper resource="mapping/Product.xml"/>
         <mapper resource="mapping/Category.xml"/>
         <mapper resource="mapping/Organization.xml"/>
+        <mapper resource="mapping/ChartPie.xml"/>
     </mappers>
 </configuration>
