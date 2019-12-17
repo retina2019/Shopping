@@ -170,6 +170,7 @@ public class ShopController {
                 mv.setViewName("incorrect");
             }
             if(resultshop.getTel().equals(tel)){
+                mv.addObject("shopmessage",resultshop);
                 mv.setViewName("index/shopindex");  //此方法只能返回.jsp界面，若想返回html可以把HTML文件转换成.jsp文件
             }
 
@@ -264,6 +265,21 @@ public class ShopController {
             e.printStackTrace();
         }
         return "删除成功！！！";
+    }
+    @RequestMapping("/shopmessage")
+    public ModelAndView shopmessage(HttpServletRequest req, HttpServletResponse response) {
+        ModelAndView mv = new ModelAndView();
+        try{
+            String shopName = req.getParameter("shopName");
+            System.out.println("shopName:"+ shopName);
+
+            Shop shop = shopService.queryByShopName(shopName);
+            mv.addObject("shopmessage", shop);//shopmessage是向前端传递的参数名。这边传的是对象worker，所以对应前端格式：参数名.对象内容（比如workermessage.workerId)
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        mv.setViewName("user/editshopper");
+        return mv;
     }
 
 }
