@@ -33,4 +33,6 @@ public interface UserMapper extends BaseMapper<User> {
 							  @Param("state") int state);
 
     void editor(User user);
+
+	User searchByUserName(@Param("userName") String userName);
 }

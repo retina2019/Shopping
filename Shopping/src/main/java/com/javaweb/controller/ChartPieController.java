@@ -31,15 +31,16 @@ public class ChartPieController {
     @RequestMapping(value = "/echart")//返回主界面
     public ModelAndView assess(HttpServletRequest req, HttpServletResponse response) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("chartpie");
+        mv.setViewName("statistics/chartpie");
         List<ChartPie> list = new ArrayList<ChartPie>();
         try {
             response.setContentType("text/html;charset=utf-8");
             list = chartPieService.sumTotal();
             String listStr = JSONObject.toJSONString(list);
             mv.addObject("dataArr", listStr);
-//            List<Product> listName= productService.queryAll();
-//            mv.addObject("cutId",listName);
+            List<Product> listName= productService.queryAll();
+            String listPro=JSONObject.toJSONString(listName);
+            mv.addObject("cutId",listPro);
         } catch (Exception e) {
             e.printStackTrace();
         }

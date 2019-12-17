@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商品库存数量：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商品入库数量：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text"  class="input-text"  id="quantity" name="quantity"  >
             </div>

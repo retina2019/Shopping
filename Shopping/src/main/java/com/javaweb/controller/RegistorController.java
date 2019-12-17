@@ -1,8 +1,11 @@
 package com.javaweb.controller;
 
 import com.javaweb.model.Dep;
+import com.javaweb.model.Shop;
+import com.javaweb.model.ShopCategory;
 import com.javaweb.model.User;
 import com.javaweb.service.DepService;
+import com.javaweb.service.ShopcutService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +21,8 @@ import java.util.List;
 public class RegistorController {
     @Resource
     private DepService depService;
+    @Resource
+    private ShopcutService shopcutService;
 //    @Resource
 //    private UserService userService;
     /**
@@ -34,12 +39,14 @@ public class RegistorController {
         return mv;
     }
     @RequestMapping("/shoper")
-    public ModelAndView shopper(HttpServletRequest req, HttpServletResponse response) throws Exception {
+    public ModelAndView shoper(HttpServletRequest req, HttpServletResponse response) throws Exception {
         Date date = new Date();
-        System.out.println(date.toString()+":shopper registor");
+        System.out.println(date.toString()+":shoper registor");
         ModelAndView mv=new ModelAndView();
-        User user=new User();
-        mv.addObject("usermessage",user);
+        List<ShopCategory> shopcut = shopcutService.searchAll();
+        mv.addObject("shopcategory", shopcut);
+        Shop shop=new Shop();
+        mv.addObject("shopmessage",shop);
         mv.setViewName("user/addshopper");
         return mv;
     }

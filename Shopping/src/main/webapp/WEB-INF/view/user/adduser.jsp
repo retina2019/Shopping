@@ -101,7 +101,7 @@
         var isMob=/^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
         var value=document.getElementById("tel").value.trim();
         if(isMob.test(value)||isPhone.test(value)){
-            return true
+            return true;
         } else {
             alert('电话号码格式错误，请输入正确号码，若是国定电话，请输入此格式：****-********');
             return false;

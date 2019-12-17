@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: stone
-  Date: 2019-11-07
-  Time: 11:00
+  Date: 2019-12-15
+  Time: 16:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="/Shopping/H-ui.admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    <title>Insert title here</title>
+    <title>普通用户登录</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 </head>
@@ -42,22 +42,11 @@
             <dt><i class="Hui-iconfont">&#xe616;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                <li><a data-href="/Shopping/user/users" data-title="用户管理" href="javascript:void(0)">用户管理</a></li>
-
-                </ul>
-                <ul>
-                    <li><a data-href="/Shopping/user/shoppers" data-title="商家管理" href="javascript:void(0)">商家管理</a></li>
-
-                </ul>
-                <ul>
-                    <li><a data-href="/Shopping/admin/administrators" data-title="后台人员管理" href="javascript:void(0)">后台人员管理</a></li>
-
-                </ul>
-                <ul>
-                    <li><a data-href="/Shopping/department/revertAlldeps" data-title="部门管理" href="javascript:void(0)">部门管理</a></li>
+                    <li><a data-href="/Shopping/shop/shopmessage" data-title="商铺信息" href="javascript:void(0)">商铺信息</a></li>
 
                 </ul>
             </dd>
+
             <dt><i class="Hui-iconfont">&#xe616;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
@@ -73,7 +62,14 @@
                     <li><a data-href="/Shopping/product/product" data-title="商品管理" href="javascript:void(0)">商品管理</a></li>
                 </ul>
             </dd>
-            <dt>商品统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe616;</i>销售管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="/Shopping/orders/order" data-title="订单管理" href="javascript:void(0)">订单管理</a></li>
+                </ul>
+
+            </dd>
+            <dt><i class="Hui-iconfont">&#xe616;</i>商品统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
                     <li><a data-href="/Shopping/echarts/echart" data-title="每日库存商品统计" href="javascript:void(0)">每日库存商品统计</a></li>

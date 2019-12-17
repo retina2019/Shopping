@@ -1,6 +1,7 @@
 package com.javaweb.service.Impl;
 
 import com.javaweb.mapper.UserMapper;
+import com.javaweb.model.Admin;
 import com.javaweb.model.User;
 import com.javaweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +79,12 @@ public class UserServiceImpl implements UserService {
         // TODO Auto-generated method stub
         System.out.println("userservice:"+user.getUserId());
         userMapper.editor(user);
+    }
+    @Override
+    public User searchByUserName(String userName)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("queryByUsername:"+userName);
+        User user=userMapper.searchByUserName(userName);
+        return user;
     }
 }

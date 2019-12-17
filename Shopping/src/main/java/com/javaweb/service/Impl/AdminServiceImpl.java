@@ -53,4 +53,11 @@ public  int countByConditions(String userId, String userName, int state)throws E
         System.out.println("deleteByUserId:"+userId);
         adminMapper.deleteByUserId(userId);
     }
+    @Override
+    public Admin queryByUserName(String userName)throws Exception{
+        // TODO Auto-generated method stub
+        System.out.println("queryByUsername:"+userName);
+        Admin admin=adminMapper.queryByUserName(userName);
+        return admin;
+    }
 }

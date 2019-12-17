@@ -9,9 +9,7 @@
         INSERT INTO JAVA_USER (userId,userName,sex,password,tel,state,address,registerTime)
                 VALUES (#{userId},#{userName},#{sex}, #{password}, #{tel},#{state},#{address},#{registerTime})
     ]]></insert>
-    <select id="queryByUserName" parameterType="string" resultType="com.javaweb.model.User">
-        select * from JAVA_USER where userName = #{userName}
-    </select>
+
     <select id="queryByConditions" parameterType="string" resultType="com.javaweb.model.User">
         select * from JAVA_USER
         <trim prefix="where" prefixOverrides="and">
@@ -136,4 +134,10 @@
             </if>
         </trim>
     </update>
+    <select id="searchByUserName" parameterType="string" resultType="com.javaweb.model.User">
+        select * from JAVA_USER where userName = #{userName}
+    </select>
+    <select id="queryByUserName" parameterType="string" resultType="com.javaweb.model.User">
+        select * from JAVA_USER where userName = #{userName}
+    </select>
 </mapper>

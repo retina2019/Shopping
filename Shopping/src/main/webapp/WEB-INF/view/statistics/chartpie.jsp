@@ -41,8 +41,8 @@
             legend: {
                 orient: 'vertical',
                 left: 'left',
-                <%--data:${cutId},--%>
-                data:['饮料','饼干','休闲食品']
+                data:${cutId},
+                // data:['饮料','饼干','休闲食品']
             },
             series: [
                 {

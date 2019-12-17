@@ -31,14 +31,10 @@
 </nav>
 <div class="page-container">
     <div class="text-c"> 查询条件：
-        <input type="text" name="" id="userId" placeholder="id号" style="width:120px" class="input-text">
-        <input type="text" name="" id="userName" placeholder="用户名" style="width:120px" class="input-text">
-        <select name="sex" id="state" placeholder="状态" style="width:120px" class="input-text">
-            <option value="3">在职</option>
-            <option value="4">离职</option>
-            <option value="5">退休</option>
-        </select>
-        <button name="" onclick="user_query()" id="queryuser" class="btn btn-success btn btn-success radius r" type="submit"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
+        <input type="text" name="" id="shopId" placeholder="id号" style="width:120px" class="input-text">
+        <input type="text" name="" id="shopName" placeholder="商户名" style="width:120px" class="input-text">
+
+        <button name="" onclick="shop_query()" id="queryshop" class="btn btn-success btn btn-success radius r" type="submit"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
     </div>
     <div class="mt-20">
         <table id="tab"  class="table table-border table-bordered table-bg table-hover table-sort">
@@ -46,12 +42,13 @@
             <tr>
                 <th><input name="" type="checkbox" value=""></th>
                 <th>ID</th>
+                <th>商户类型</th>
+                <th>商户区域</th>
                 <th>商户名</th>
-                <th>密码</th>
-                <th>联系方式</th>
+                <th>商铺电话</th>
                 <th>状态</th>
                 <th>地址</th>
-                <th>注册时间</th>
+                <th>商铺注册时间</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -70,16 +67,15 @@
 <script type="text/javascript" src="/Shopping/H-ui.admin/static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="/Shopping/H-ui.admin/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript">
-    var url = "/Shopping/user/getshopList";
+    var url = "/Shopping/shop/getshopList";
     var getParamsUrl = function(){
-        var userId=$("#userId").val();
-        var userName=$("#userName").val();
-        var state=$("#state").val();
-        var myurl= url+"?userId="+userId+"&userName="+userName+"&state="+state;
+        var shopId=$("#shopId").val();
+        var shopName=$("#shopName").val();
+        var myurl= url+"?shopId="+shopId+"&shopName="+shopName;
         return myurl;
     }
     var table;
-    function user_query(){
+    function shop_query(){
         var myurl = getParamsUrl();
 
         if(null!=table)table.destroy();
@@ -92,14 +88,16 @@
             } ),
             "columns": [
                 {
-                    data: 'userId',
+                    data: 'shopId',
                     render:function(data, type, full, meta) {
-                        return '<input  type="checkbox" name="id" value="'+data.userId+'" />'
+                        return '<input  type="checkbox" name="id" value="'+data.shopId+'" />'
                     }
                 },
-                { "data": "userId"},
-                { "data": "userName" },
-                {"data":"password"},
+                { "data": "shopId"},
+                { "data": "shopcut" },
+                { "data": "seat"},
+                { "data": "shopName" },
+
                 { "data": "tel" },
                 { "data": "state" ,"render":function(data,type,row,meta){
                         var a="";
@@ -110,40 +108,40 @@
                     }
                 },
                 { "data": "address" },
-                {"data":"registerTime",render:function(data, type, full, meta) {
+                {"data":"addtime",render:function(data, type, full, meta) {
                         var dateStr="";
-                        var registerTime=data;
-                        if(registerTime && registerTime!=""){
-                            dateStr = new Date(registerTime);
+                        var addtime=data;
+                        if(addtime && addtime!=""){
+                            dateStr = new Date(addtime);
                         }
                         return dateStr;
                     }},
                 {"data":null,"render":function (data,type,row,meta) {
 
-                        var html='<button type="button" class="ml-5" onclick="user_edit('+data.userId+')">编辑</button>'+
-                            '&nbsp;&nbsp;<button type="button" class="ml-5" onclick="user_del(this,'+data.userId+')">删除</button>'
+                        var html='<button type="button" class="ml-5" onclick="shop_edit('+data.shopId+')">编辑</button>'+
+                            '&nbsp;&nbsp;<button type="button" class="ml-5" onclick="shop_del(this,'+data.shopId+')">删除</button>'
                         return html;
                     }}
             ]
 
         } );
     }
-    function user_edit(id){
+    function shop_edit(id){
         var title="商户编辑";
-        var url="/Shopping/user/editshoper";
+        var url="/Shopping/shop/editshoper";
         var index = layer.open({
             type: 2,
             title: title,
-            content: url+"?userId="+id
+            content: url+"?shopId="+id
         });
         layer.full(index);
     }
-    function user_del(obj,id){
-        var data={"userId":id}
+    function shop_del(obj,id){
+        var data={"shopId":id}
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
                 type: 'POST',
-                url: '/Shopping/user/deleteshoper',
+                url: '/Shopping/shop/deleteshoper',
                 //dataType: 'json',
                 data:JSON.stringify(data),
                 dataType: 'text',//直接返回字符串用text
@@ -159,7 +157,7 @@
         });
     }
     $(document).ready(function() {
-        user_query();
+        shop_query();
     });
 </script>
 </body>

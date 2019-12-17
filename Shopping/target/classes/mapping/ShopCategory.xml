@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaweb.mapper.ShopcutMapper">
+    <select id="searchByShopcutId" parameterType="string" resultType="com.javaweb.model.ShopCategory">
+        select * from SHOPCATEGORY
+        <trim prefix="where" prefixOverrides="and">
+            <if test="shopcutId != null">
+                and shopcutId = #{shopcutId}
+            </if>
+        </trim>
+    </select>
+    <select id="searchAll" parameterType="string" resultType="com.javaweb.model.ShopCategory">
+        select * from SHOPCATEGORY
+    </select>
+    <insert id="add" parameterType="com.javaweb.model.ShopCategory"><![CDATA[
+        INSERT INTO SHOPCATEGORY (shopcutId,shopcut,upshopcutId,upshopcut,shopcutDescribe)
+                VALUES (#{shopcutId},#{shopcut}, #{upshopcutId},#{upshopcut}, #{shopcutDescribe})
+    ]]></insert>
+    <select id="queryByShopcutId" parameterType="string" resultType="com.javaweb.model.ShopCategory">
+        select * from SHOPCATEGORY WHERE shopcutId=#{shopcutId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.ShopCategory">
+        update SHOPCATEGORY
+        <trim prefix="set" suffixOverrides=",">
+            <if test="shopcut != null">
+                shopcut = #{shopcut},
+            </if>
+            <if test="upshopcutId!=null">
+                upshopcutId=#{upshopcutId},
+            </if>
+            <if test="upshopcut!=null">
+                upshopcut=#{upshopcut},
+            </if>
+            <if test="shopcutDescribe!=null">
+                shopcutDescribe=#{shopcutDescribe}
+            </if>
+        </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="shopcutId != null">
+                and shopcutId = #{shopcutId}
+            </if>
+        </trim>
+    </update>
+    <delete id="deleteByShopcutId" >
+        delete from SHOPCATEGORY where shopcutId=#{shopcutId}
+    </delete>
+</mapper>

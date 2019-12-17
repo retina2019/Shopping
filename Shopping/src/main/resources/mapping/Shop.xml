@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaweb.mapper.ShopMapper">
+    <select id="queryByShopName" parameterType="string" resultType="com.javaweb.model.Shop">
+        select * from SHOP where shopName = #{shopName}
+    </select>
+    <select id="queryByConditions" parameterType="string" resultType="com.javaweb.model.Shop">
+        select * from SHOP
+        <trim prefix="where" prefixOverrides="and">
+            <if test="shopId!=null and shopId!= ''">
+                and shopId=#{shopId}
+            </if>
+            <if test="shopName!=null and shopName!=''">
+                and shopName=#{shopName}
+            </if>
+        </trim>
+        ${orderSql}
+        limit #{startIndex},#{pageSize}
+    </select>
+    <select id="countByConditions" parameterType="string" resultType="int">
+        select count(*) from SHOP
+        <trim prefix="where" prefixOverrides="and">
+            <if test="shopId!=null and shopId!= ''">
+                and shopId=#{shopId}
+            </if>
+            <if test="shopName!=null and shopName!=''">
+                and shopName=#{shopName}
+            </if>
+        </trim>
+    </select>
+    <select id="queryByShopId" parameterType="string" resultType="com.javaweb.model.Shop">
+        select * from SHOP where shopId = #{shopId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.Shop">
+        update SHOP
+        <trim prefix="set" suffixOverrides=",">
+
+            <if test="shopcut != null">
+                shopcut = #{shopcut},
+            </if>
+            <if test="seat!=null">
+                seat=#{seat},
+            </if>
+            <if test="shopName!= null">
+                shopName = #{shopName},
+            </if>
+            <if test="address!= null">
+                address = #{address},
+            </if>
+            <if test="tel!= null">
+                tel = #{tel},
+            </if>
+            <if test="photo!=null">
+                photo=#{photo},
+            </if>
+             <if test="turnover!=null">
+                 turnover=#{turnover},
+             </if>
+            <if test="reviews!=null">
+                reviews=#{reviews},
+            </if>
+            <if test="state!=null">
+                state=#{state},
+            </if>
+            <if test="addtime!=null">
+                addtime=#{addtime},
+            </if>
+            <if test="modifytime!=null">
+                modifytime=#{modifytime},
+            </if>
+        </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="shopId != null">
+                and shopId = #{shopId}
+            </if>
+        </trim>
+    </update>
+    <delete id="deleteByShopId" >
+        delete from SHOP where shopId=#{shopId}
+    </delete>
+    <insert id="add" parameterType="com.javaweb.model.Shop"><![CDATA[
+        INSERT INTO SHOP (shopId,shopcut,seat,shopName,address,tel,photo,turnover,reviews,state,addtime,modifytime)
+                VALUES (#{shopId},#{shopcut},#{seat},#{shopName},#{address},#{tel},#{photo},#{turnover},#{reviews},#{state},#{addtime},#{modifytime})
+    ]]></insert>
+</mapper>

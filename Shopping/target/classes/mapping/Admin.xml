@@ -76,4 +76,7 @@
     <delete id="deleteByUserId">
         delete from ADMININSTRTOR where userId=#{userId}
     </delete>
+    <select id="queryByUserName" parameterType="string" resultType="com.javaweb.model.Admin">
+        select * from ADMININSTRTOR where userName = #{userName}
+    </select>
 </mapper>

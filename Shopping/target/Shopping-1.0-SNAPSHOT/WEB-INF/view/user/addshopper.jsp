@@ -32,30 +32,60 @@
 <script type="text/javascript" src="/Shopping/H-ui.admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <body>
 <div class="page-container">
-    <form  id="adduser" class="form form-horizontal"action="/" method="POST">
+    <form  id="addshop" class="form form-horizontal"action="/" method="POST">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> userId：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> shopId：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text"  id="userId" name="userId"  >
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 用户名：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text"  id="userName" name="userName"  >
+                <input type="text"  class="input-text"  id="shopId" name="shopId"  >
             </div>
         </div>
 
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 密码：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商家类型：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="password"  class="input-text" value=""  id="password-register-user" name="psd"  >
+                <select name="shopcutId" id="shopcutId" class="input-text"value="">
+                    <c:forEach items="${shopcategory}" var="shopcut">
+                        <option value="${shopcut.shopcutId}">
+                                ${shopcut.shopcut}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> TEL：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商家区域：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text"  class="input-text"  id="seat" name="seat"  >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商户名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text"  class="input-text"  id="shopName" name="shopName"  >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商户地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text"  class="input-text" value=""  id="address" name="address"  >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商铺电话：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text"  class="input-text" value=""  id="tel" name="tel"  >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">商铺特色：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text"  class="input-text" value=""  id="turnover" name="turnover"  >
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"> 商铺评价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text"  class="input-text" value=""  id="reviews" name="reviews"  >
             </div>
         </div>
         <div class="row cl">
@@ -66,16 +96,26 @@
                 <input type="checkbox"   name="state" value="5"/>退休
             </div>
         </div>
+
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 地址：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 商铺注册时间：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text" value=""  id="address" name="address"  >
+                <input type="text"  class="input-text Wdate" onfocus="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d'})"value="" id="addtime" name="addtime"  >
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span> 注册时间：</label>
+            <label class="form-label col-xs-4 col-sm-2"> 商铺修改时间：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text"  class="input-text Wdate" onfocus="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d'})"value="" id="registerTime" name="registerTime"  >
+                <input type="text"  class="input-text Wdate" onfocus="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d'})"value="" id="modifytime" name="modifytime"  >
+            </div>
+        </div>
+    </form>
+    <form class="form form-horizontal" action="/Shopping/shop/photo" method="post" enctype="multipart/form-data">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">商铺图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="file" id="photo" name="photo">
+                <input type="submit" class="btn btn-default btn-uploadstar radius ml-10" id="" name="" value="上传">
             </div>
         </div>
         <div class="row cl">
@@ -102,27 +142,41 @@
         var isMob=/^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
         var value=document.getElementById("tel").value.trim();
         if(isMob.test(value)||isPhone.test(value)){
-            return true
+            return true;
         } else {
             alert('电话号码格式错误，请输入正确号码，若是国定电话，请输入此格式：****-********');
             return false;
         }
     }
     var checkData = function(){
-        var userId = $("#userId").val();
-        if(userId==""){
+        var shopId = $("#shopId").val();
+        if(shopId==""){
             alert("ID不可为空");
             return false;
         }
-        var userName = $("#userName").val();
-        if(userName==""){
-            alert("用户名不可为空");
+        var shopcutId=$("#shopcutId").val()
+        if(shopcutId==""){
+            alert("商户类型不可为空");
             return false;
         }
-
-        var password = $("#password-register-user").val();
-        if(password==""){
-            alert("密码不可为空");
+        var seat=$("seat").val();
+        if(seat==""){
+            alert("商户区域不可为空");
+            return false;
+        }
+        var shopName = $("#shopName").val();
+        if(shopName==""){
+            alert("商户名不可为空");
+            return false;
+        }
+        var address=$("#address").val();
+        if(address==""){
+            alert("商户地址不可为空");
+            return false;
+        }
+        var tel=$("#tel").val();
+        if(tel==""){
+            alert("商铺电话不可为空");
             return false;
         }
         var state= $('input:checkbox[name="state"]:checked').val();
@@ -130,14 +184,9 @@
             alert("请选中一个状态!");
             return false;
         }
-        var address = $("#address").val();
-        if(address==""){
-            alert("地址不可为空");
-            return false;
-        }
-        var registerTime = $("#registerTime").val();
-        if(registerTime==""){
-            alert("注册时间不可为空");
+        var addTime=$("#addTime").val();
+        if(addTime==""){
+            alert("商铺注册时间不可为空")
             return false;
         }
         if(!checkTel()){
@@ -149,17 +198,22 @@
     var mysubmit = function(){
         if (checkData()){
             var data={
-                userId:$("#userId").val(),
-                userName:$("input[name='userName']").val(),
-                password:$("#password-register-user").val(),
-                tel:$("#tel").val(),
-                state:$('input[name="state"]:checked').val(),
+                shopId:$("#shopId").val(),
+                shopcutId:$("#shopcutId").val(),
+                seat:$("#seat").val(),
+                shopName:$("#shopName").val(),
                 address:$("#address").val(),
-                registerTime:$("#registerTime").val()
+                tel:$("#tel").val(),
+                photo:$("#photo").val(),
+                turnover:$("#turnover").val(),
+                reviews:$("#reviews").val(),
+                state:$("#state").val(),
+                addtime:$("#addtime").val(),
+                modifytime:$("#modifytime").val()
             }
             $.ajax({
                 type: "POST",
-                url: "/Shopping/user/user",
+                url: "/Shopping/shop/shop",
                 // dataType:"json",
                 data:JSON.stringify(data),
                 //contentType : "application/x-www-form-urlencoded",

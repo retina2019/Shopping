@@ -22,4 +22,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
     void edit(Admin admin);
 
     void deleteByUserId(int userId);
+
+    Admin queryByUserName(@Param("userName") String userName);
 }

@@ -23,4 +23,6 @@ public interface UserService {
     public int countByShopConditions(String userId, String userName, int state)throws Exception;
 
     public void editor(User user)throws Exception;
+
+    public User searchByUserName(String userName)throws Exception;
 }
