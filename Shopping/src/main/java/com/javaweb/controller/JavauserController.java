@@ -33,6 +33,7 @@ public class JavauserController {
                 mv.setViewName("incorrect");
             }
             if (resultuser.getPassword().equals(password)) {
+                mv.addObject("usermessage", resultuser);
                 mv.setViewName("index/javauserindex");  //此方法只能返回.jsp界面，若想返回html可以把HTML文件转换成.jsp文件
             }
 

@@ -42,7 +42,13 @@
             <dt><i class="Hui-iconfont">&#xe616;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a data-href="/Shopping/javauser/usermessage" data-title="用户信息" href="javascript:void(0)">用户信息</a></li>
+
+                        用户名:<input type="text" id="userName"class="input-text" value=${usermessage.userName}>
+<%--                   <a data-href="/Shopping/javauser/usermessage" data-title="用户信息" href="javascript:void(0)">用户信息</a>--%>
+                        <a   onClick="usermessage('用户信息','/Shopping/javauser/usermessage','${usermessage.userName}')" data-href="javascript:;" data-title="用户信息">
+                        用户信息
+                        </a>
+
                 </ul>
             </dd>
 
@@ -109,6 +115,19 @@
 <script type="text/javascript" src="/Shopping/H-ui.admin/static/h-ui.admin/js/H-ui.admin.js"></script>
 
 <script type="text/javascript" src="/Shopping/H-ui.admin/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript">
+    function usermessage(title,url){
+        var userName=$("#userName").val();
+        var myurl=url+"?userName="+userName;
+        // location.href = myurl;
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: myurl
+        });
+        layer.full(index);
+    }
+</script>
 
 </body>
 </html>
