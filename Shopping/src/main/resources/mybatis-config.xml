@@ -27,5 +27,6 @@
         <mapper resource="mapping/Order.xml"/>
         <mapper resource="mapping/Shop.xml"/>
         <mapper resource="mapping/ShopCategory.xml"/>
+        <mapper resource="mapping/Bill.xml"/>
     </mappers>
 </configuration>

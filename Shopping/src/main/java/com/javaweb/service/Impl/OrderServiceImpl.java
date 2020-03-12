@@ -30,4 +30,23 @@ public  int countByConditions(String tel, int userId, String userName, String or
     int count=orderMapper.countByConditions(tel,userId,userName,orderId,payNo,verification,proId,proName,expand,state,transbegin,transend,updatebegin,updateend);
     return count;
 }
+@Override
+public  void add(Order order)throws Exception{
+    // TODO Auto-generated method stub
+    System.out.println("order service:" + order.getProId());
+    orderMapper.add(order);
+}
+@Override
+public  Order queryByOrderId(String orderId)throws Exception{
+    // TODO Auto-generated method stub
+    System.out.println("queryByOrderId:"+orderId);
+    Order order=orderMapper.queryByOrderId(orderId);
+    return order;
+}
+@Override
+public void edit(Order order)throws Exception{
+    // TODO Auto-generated method stub
+    System.out.println("orderservice:"+order.getOrderId());
+    orderMapper.edit(order);
+}
 }

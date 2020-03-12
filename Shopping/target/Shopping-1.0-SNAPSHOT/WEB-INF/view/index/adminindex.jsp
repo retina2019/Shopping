@@ -84,6 +84,13 @@
                 </ul>
 
             </dd>
+            <dt><i class="Hui-iconfont">&#xe616;</i>财务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="/Shopping/bills/bill" data-title="发票管理" href="javascript:void(0)">发票管理</a></li>
+                </ul>
+
+            </dd>
             <dt><i class="Hui-iconfont">&#xe616;</i>商品统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>

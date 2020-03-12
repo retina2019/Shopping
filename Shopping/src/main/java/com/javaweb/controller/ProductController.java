@@ -4,9 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.javaweb.model.Category;
 import com.javaweb.model.Product;
-import com.javaweb.service.CutService;
-import com.javaweb.service.ExcelService;
-import com.javaweb.service.ProductService;
+import com.javaweb.model.Shop;
+import com.javaweb.model.User;
+import com.javaweb.service.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,10 @@ public class ProductController {
     private CutService cutService;
     @Resource
     private ExcelService excelService;
+    @Resource
+    private JavauserService javauserService;
+    @Resource
+    private ShopService shopService;
 
     @RequestMapping(value = "/product")
     public ModelAndView product(HttpServletRequest req, HttpServletResponse response) {
@@ -409,6 +413,11 @@ public class ProductController {
         }
         return null;
     }
-
+    @RequestMapping(value = "/userproduct")
+    public ModelAndView userproduct(HttpServletRequest req, HttpServletResponse response) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("product/user-product");
+        return mv;
+    }
 
 }

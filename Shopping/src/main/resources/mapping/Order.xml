@@ -102,4 +102,33 @@
             </if>
         </trim>
     </select>
+    <insert id="add" parameterType="com.javaweb.model.Order"><![CDATA[
+        INSERT INTO ORDERTABLE (orderId, userId, userName, tel, address, shopId, shopName, payNo, verification, proId, proName, expand, state, price, scale, totalprice, net, transtime,  updatetime)
+                VALUES (#{orderId},#{userId},#{userName},#{tel},#{address},#{shopId},#{shopName},#{payNo},#{verificaton},#{proId},#{proName},#{expand},#{state},#{price},#{scale},#{totalprice},#{net},#{tanstime},#{updatetime})
+    ]]></insert>
+    <select id="queryByOrderId" parameterType="string" resultType="com.javaweb.model.Order">
+        select * from ORDERTABLE where orderId=#{orderId}
+    </select>
+    <update id="edit" parameterType="com.javaweb.model.Order">
+    update ORDERTABLE
+    <trim prefix="set" suffixOverrides=",">
+    <if test="userId!= null">
+        userId = #{userId},
+    </if>
+        <if test="userName!= null">
+            userName = #{userName},
+        </if>
+        <if test="tel!= null">
+            tel= #{tel},
+        </if>
+        <if test="address!= null">
+            address = #{address},
+        </if>
+    </trim>
+        <trim prefix="where" prefixOverrides="and">
+            <if test="orderId != null">
+                and orderId = #{orderId}
+            </if>
+        </trim>
+    </update>
 </mapper>

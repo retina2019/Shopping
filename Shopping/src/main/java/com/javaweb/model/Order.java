@@ -3,10 +3,13 @@ package com.javaweb.model;
 import java.util.Date;
 
 public class Order {
-    public String tel;
+    public String orderId;
     public int userId;
     public String userName;
-    public String orderId;
+    public String tel;
+    public String address;
+    public String shopId;
+    public String shopName;
     public String payNo;
     public String verification;
     public String proId;
@@ -14,11 +17,58 @@ public class Order {
     public String expand;
     public int state;
     public float price;
+    public float scale;
+    public float totalprice;
     public String net;
     public Date transtime;
     public String transtimeStr;
 
     public Date updatetime;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getScale() {
+        return scale;
+    }
+
+    public void setScale(float scale) {
+        this.scale = scale;
+    }
+
+    public float getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(float totalprice) {
+        this.totalprice = totalprice;
+    }
+
     public String updatetimeStr;
 
     public String getTel() {

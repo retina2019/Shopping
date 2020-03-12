@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javaweb.mapper.BillMapper">
+    <select id="queryByConditions" parameterType="string" resultType="com.javaweb.model.Bill">
+
+        select * from BILL
+        <trim prefix="where" prefixOverrides="and">
+            <if test="orderId!=null and orderId!= ''">
+                and orderId=#{orderId}
+            </if>
+            <if test="companyName!=null and companyName!=''">
+                and companyName=#{companyName}
+            </if>
+            <if test="tfn!=null and tfn!=''">
+                and tfn=#{tfn}
+            </if>
+            <if test="items!=null and items!=''">
+                and items=#{items}
+            </if>
+            <if test="remarks!=null and remarks!=''">
+                and remarks=#{remarks}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and userId=#{userId}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+            <if test="applytimebegin!=null and applytimebegin!=''">
+                <![CDATA[and applytime>=#{applytimebegin}]]>
+            </if>
+            <if test="applytimeend!=null and applytimeend!=''">
+                <![CDATA[and applytime<=#{applytimeend}]]>
+            </if>
+        </trim>
+        ${orderSql}
+        limit #{startIndex},#{pageSize}
+    </select>
+    <select id="countByConditions" parameterType="string" resultType="int">
+        select count(*) from BILL
+        <trim prefix="where" prefixOverrides="and">
+            <if test="orderId!=null and orderId!= ''">
+                and orderId=#{orderId}
+            </if>
+            <if test="companyName!=null and companyName!=''">
+                and companyName=#{companyName}
+            </if>
+            <if test="tfn!=null and tfn!=''">
+                and tfn=#{tfn}
+            </if>
+            <if test="items!=null and items!=''">
+                and items=#{items}
+            </if>
+            <if test="remarks!=null and remarks!=''">
+                and remarks=#{remarks}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and userId=#{userId}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+            <if test="applytimebegin!=null and applytimebegin!=''">
+                <![CDATA[and applytime>=#{applytimebegin}]]>
+            </if>
+            <if test="applytimeend!=null and applytimeend!=''">
+                <![CDATA[and applytime<=#{applytimeend}]]>
+            </if>
+        </trim>
+    </select>
+    <insert id="add" parameterType="com.javaweb.model.Bill"><![CDATA[
+        INSERT INTO BILL (orderId, companyName,tfn,items,price,remarks,userId,state,applytime)
+                VALUES (#{orderId},#{companyName},#{tfn},#{items},#{price},#{remarks},#{userId},#{state},#{applytime})
+    ]]></insert>
+    <select id="queryByOrderId" parameterType="string" resultType="com.javaweb.model.Bill">
+        select * from BILL where orderId=#{orderId}
+    </select>
+<update id="edit" parameterType="com.javaweb.model.Bill">
+update BILL
+    <trim prefix="set" suffixOverrides=",">
+    <if test="companyName!=null">
+        companyName=#{companyName},
+    </if>
+    <if test="tfn!=null">
+        tfn=#{tfn},
+    </if>
+    <if test="items!=null">
+        items=#{items},
+    </if>
+    <if test="price!=null">
+        price=#{price},
+    </if>
+    <if test="remarks!=null">
+        remarks=#{remarks},
+    </if>
+    <if test="userId!=null">
+        userId=#{userId},
+    </if>
+    <if test="applytime!=null">
+        applytime=#{applytime},
+    </if>
+    </trim>
+    <trim prefix="where" prefixOverrides="and">
+        <if test="orderId != null">
+            and orderId = #{orderId}
+        </if>
+    </trim>
+</update>
+    <delete id="deleteByOrderId">
+        delete from BILL where orderId=#{orderId}
+    </delete>
+</mapper>

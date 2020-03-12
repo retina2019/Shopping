@@ -42,7 +42,7 @@
             <dt><i class="Hui-iconfont">&#xe616;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    商户名:<input type="text" id="shopName"class="input-text" value=${shopmessage.shopName}>
+                    商户名:<input  type="text" id="shopName"class="input-text" value=${shopmessage.shopName}>
                     <%--                   <a data-href="/Shopping/javauser/usermessage" data-title="用户信息" href="javascript:void(0)">用户信息</a>--%>
                     <a   onClick="shopmessage('商户信息','/Shopping/shop/shopmessage','${shopmessage.shopName}')" data-href="javascript:;" data-title="商户信息">
                         商户信息

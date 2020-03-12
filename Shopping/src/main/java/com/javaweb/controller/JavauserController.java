@@ -57,5 +57,20 @@ public class JavauserController {
         mv.setViewName("user/edituser");
         return mv;
     }
+    @RequestMapping("/userordermessage")
+    public ModelAndView userordermessage(HttpServletRequest req, HttpServletResponse response) {
+        ModelAndView mv = new ModelAndView();
+        try{
+            String userName = req.getParameter("userName");
+            System.out.println("userName:"+ userName);
+
+            User user = userService.queryByUserName(userName);
+            mv.addObject("usermessage", user);//usermessage是向前端传递的参数名。这边传的是对象worker，所以对应前端格式：参数名.对象内容（比如workermessage.workerId)
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        mv.setViewName("user/edituserorder");
+        return mv;
+    }
 
 }

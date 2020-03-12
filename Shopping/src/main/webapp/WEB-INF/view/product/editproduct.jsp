@@ -142,7 +142,7 @@
         var scale=$("#scale").val();
         if(scale==""){
             alert("商品销量不可为空");
-            return false
+            return false;
         }
         return true;
         }

@@ -2,9 +2,16 @@ package com.javaweb.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.javaweb.model.Category;
 import com.javaweb.model.Order;
+import com.javaweb.model.Product;
+import com.javaweb.model.User;
+import com.javaweb.service.CutService;
 import com.javaweb.service.OrderService;
+import com.javaweb.service.ProductService;
+import com.javaweb.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +29,10 @@ import java.util.Map;
 public class OrderController {
     @Resource
     private OrderService orderService;
+    @Resource
+    private ProductService productService;
+    @Resource
+    private UserService userService;
     @RequestMapping(value="/order")
     public ModelAndView order(HttpServletRequest req, HttpServletResponse response) {
 
@@ -83,4 +94,40 @@ public class OrderController {
         return str;
 
     }
+
+    @RequestMapping(value = "/addorder")
+    public ModelAndView addorder(HttpServletRequest req, HttpServletResponse response) {
+        ModelAndView mv = new ModelAndView();
+        try {
+            String userName=req.getParameter("userName");
+            String proId = req.getParameter("proId");
+            System.out.println("proId:" + proId);
+            User user=userService.queryByUserName(userName);
+            mv.addObject("usermessage",user);
+            Product product = productService.queryByproId(proId);
+            mv.addObject("product", product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        mv.setViewName("orders/user-addorder");
+        return mv;
+    }
+    @RequestMapping(value = "/addordermessage", method = RequestMethod.POST)
+    @ResponseBody//@ResponsBody的作用是将java 对象转为json格式的数据，可以把具体的数据反馈到前端
+    public String addordermessage(
+            @RequestBody Order order
+    ) {
+
+        System.out.println("order.getOrderId:" + order.getOrderId());
+        try {
+            order=orderService.queryByOrderId(order.getOrderId());
+            orderService.edit(order);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "submitEdit success";
+    }
+
+
 }
